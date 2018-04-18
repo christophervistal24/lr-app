@@ -2,25 +2,31 @@
 class Page extends Controller
 {
     private $model;
+    private $admin;
 
     public function __construct()
     {
-
+        $this->model = $this->model('Database');
+        $this->admin = $this->model('Admin');
     }
 
     // Login page
     public function login()
     {
         Controller::view('layouts/header',[]);
+        if(isset($_POST['login-username'])){
+            $username = $_POST['login-username'];
+            print_r($this->admin->login($username));
+        }
         Controller::view('login',[]);
         Controller::view('layouts/footer',[]);
     }
 
-    // About page Dummy or Sample
-    public function about()
+    // Dashboard page
+    public function index()
     {
         Controller::view('layouts/header',[]);
-        Controller::view('about',[]);
+        Controller::view('index',[]);
         Controller::view('layouts/footer',[]);
     }
 
