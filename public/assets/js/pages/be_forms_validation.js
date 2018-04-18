@@ -38,46 +38,23 @@ var BeFormValidation = function() {
                     required: true,
                     equalTo: '#val-password'
                 },
-                'val-select2': {
-                    required: true
-                },
-                'val-select2-multiple': {
+                'val-firstname': {
                     required: true,
-                    minlength: 2
+                    minlength:5
                 },
-                'val-suggestions': {
-                    required: true,
-                    minlength: 5
+                'val-middlename':{
+                    required:true,
+                    minlength:2
                 },
-                'val-skill': {
-                    required: true
+                'val-lastname':{
+                    required:true,
+                    minlength:5
                 },
-                'val-currency': {
-                    required: true,
-                    currency: ['$', true]
+                'val-birthday':{
+                    required:true,
                 },
-                'val-website': {
-                    required: true,
-                    url: true
-                },
-                'val-phoneus': {
-                    required: true,
-                    phoneUS: true
-                },
-                'val-digits': {
-                    required: true,
-                    digits: true
-                },
-                'val-number': {
-                    required: true,
-                    number: true
-                },
-                'val-range': {
-                    required: true,
-                    range: [1, 5]
-                },
-                'val-terms': {
-                    required: true
+                'val-gender':{
+                    required:true,
                 }
             },
             messages: {
@@ -95,17 +72,24 @@ var BeFormValidation = function() {
                     minlength: 'Your password must be at least 5 characters long',
                     equalTo: 'Please enter the same password as above'
                 },
-                'val-select2': 'Please select a value!',
-                'val-select2-multiple': 'Please select at least 2 values!',
-                'val-suggestions': 'What can we do to become better?',
-                'val-skill': 'Please select a skill!',
-                'val-currency': 'Please enter a price!',
-                'val-website': 'Please enter your website!',
-                'val-phoneus': 'Please enter a US phone!',
-                'val-digits': 'Please enter only digits!',
-                'val-number': 'Please enter a number!',
-                'val-range': 'Please enter a number between 1 and 5!',
-                'val-terms': 'You must agree to the service terms!'
+                'val-firstname':{
+                    required: 'Please enter firstname',
+                    minlength: 'Your password must be at least 5 characters long',
+                },
+                'val-middlename':{
+                    required:'Please enter middlename',
+                    minlength:'Your middlename must be at least 2 characters long'
+                },
+                'val-lastname':{
+                    required:'Please enter lastname',
+                    minlength:'Your lastname must be at least 5 characters long'
+                },
+                'val-birthday':{
+                    required:'Please choose your birthday'
+                },
+                'val-gender':{
+                    required:'Please select gender',
+                }
             }
         });
     };

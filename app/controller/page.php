@@ -26,7 +26,7 @@ class Page extends Controller
     public function index()
     {
         Controller::view('layouts/header',[]);
-        Controller::view('index',[]);
+        Controller::view('admin/index',[]);
         Controller::view('layouts/footer',[]);
     }
 
@@ -35,6 +35,20 @@ class Page extends Controller
     {
         Controller::view('layouts/header',[]);
         Controller::view('signup',[]);
+        Controller::view('layouts/footer',[]);
+    }
+
+    public function createnew()
+    {
+        Controller::view('layouts/header',[]);
+        Controller::view('admin/createnew',[]);
+        Controller::view('layouts/footer',[]);
+    }
+
+    public function changeinfo()
+    {
+        Controller::view('layouts/header',[]);
+        Controller::view('admin/changeinfo',[]);
         Controller::view('layouts/footer',[]);
     }
 }
