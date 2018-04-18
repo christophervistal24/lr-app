@@ -22,14 +22,125 @@ var BeFormValidation = function() {
                 jQuery(e).remove();
             },
             rules: {
-                'val-username': {
+                'admin[val-username]': {
                     required: true,
-                    minlength: 3
+                    minlength: 5,
+                    remote:{
+                        url:"/../../lr-app/app/views/ajax/functions.php",
+                        type:"POST",
+                        dataType :"json",
+                        data: {
+                            username: function(){
+                                return $("#val-username").val();
+                            },
+                            action: function(){
+                                return 'checkUsername';
+                            }
+                        },
+                    }
                 },
-                'val-email': {
+                'admin[val-email]': {
                     required: true,
-                    email: true
+                    email: true,
+                    remote:{
+                        url:"/../../lr-app/app/views/ajax/functions.php",
+                        type:"POST",
+                        dataType :"json",
+                        data: {
+                            email: function(){
+                                return $("#val-email").val();
+                            },
+                            action: function(){
+                                return 'checkEmail';
+                            }
+                        },
+                    }
                 },
+                'admin[val-password]': {
+                    required: true,
+                    minlength: 8
+                },
+                'admin[val-confirm-password]': {
+                    required: true,
+                    equalTo: '#val-password',
+                    minlength :8
+                },
+                'admin[val-firstname]': {
+                    required: true,
+                    minlength:5
+                },
+                'admin[val-middlename]':{
+                    required:true,
+                    minlength:2
+                },
+                'admin[val-lastname]':{
+                    required:true,
+                    minlength:5
+                },
+                'admin[val-birthday]':{
+                    required:true,
+                },
+                'admin[val-gender]':{
+                    required:true,
+                }
+            },
+            messages: {
+                'admin[val-username]': {
+                    required: 'Please enter a username',
+                    minlength: 'Your username must consist of at least 5 characters',
+                    remote:$.validator.format("{0} is already exists"),
+                },
+                'admin[val-email]':{
+                 required: 'Please enter a valid email address',
+                 remote:$.validator.format("{0} is already exists"),
+                },
+                'admin[val-password]': {
+                    required: 'Please provide a password',
+                    minlength: 'Your password must be at least 8 characters long'
+                },
+                'admin[val-confirm-password]': {
+                    required: 'Please provide a password',
+                    minlength: 'Your password must be at least 8 characters long',
+                    equalTo: 'Please enter the same password as above'
+                },
+                'admin[val-firstname]':{
+                    required: 'Please enter firstname',
+                    minlength: 'Your password must be at least 5 characters long',
+                },
+                'admin[val-middlename]':{
+                    required:'Please enter middlename',
+                    minlength:'Your middlename must be at least 2 characters long'
+                },
+                'vadmin[al-lastname]':{
+                    required:'Please enter lastname',
+                    minlength:'Your lastname must be at least 5 characters long'
+                },
+                'admin[val-birthday]':{
+                    required:'Please choose your birthday'
+                },
+                'admin[val-gender]':{
+                    required:'Please select gender',
+                }
+            }
+        });
+    };
+
+var initValidationBootstrap2 = function(){
+        jQuery('.js-validation-bootstrap2').validate({
+            ignore: [],
+            errorClass: 'invalid-feedback animated fadeInDown',
+            errorElement: 'div',
+            errorPlacement: function(error, e) {
+                jQuery(e).parents('.form-group > div').append(error);
+            },
+            highlight: function(e) {
+                jQuery(e).closest('.form-group').removeClass('is-invalid').addClass('is-invalid');
+            },
+            success: function(e) {
+                jQuery(e).closest('.form-group').removeClass('is-invalid');
+                jQuery(e).remove();
+            },
+            rules: {
                 'val-password': {
                     required: true,
                     minlength: 5
@@ -38,31 +149,11 @@ var BeFormValidation = function() {
                     required: true,
                     equalTo: '#val-password'
                 },
-                'val-firstname': {
+                'val-current-password': {
                     required: true,
-                    minlength:5
                 },
-                'val-middlename':{
-                    required:true,
-                    minlength:2
-                },
-                'val-lastname':{
-                    required:true,
-                    minlength:5
-                },
-                'val-birthday':{
-                    required:true,
-                },
-                'val-gender':{
-                    required:true,
-                }
             },
             messages: {
-                'val-username': {
-                    required: 'Please enter a username',
-                    minlength: 'Your username must consist of at least 3 characters'
-                },
-                'val-email': 'Please enter a valid email address',
                 'val-password': {
                     required: 'Please provide a password',
                     minlength: 'Your password must be at least 5 characters long'
@@ -72,27 +163,13 @@ var BeFormValidation = function() {
                     minlength: 'Your password must be at least 5 characters long',
                     equalTo: 'Please enter the same password as above'
                 },
-                'val-firstname':{
-                    required: 'Please enter firstname',
-                    minlength: 'Your password must be at least 5 characters long',
+                 'val-current-password': {
+                    required: 'Please your current password',
                 },
-                'val-middlename':{
-                    required:'Please enter middlename',
-                    minlength:'Your middlename must be at least 2 characters long'
-                },
-                'val-lastname':{
-                    required:'Please enter lastname',
-                    minlength:'Your lastname must be at least 5 characters long'
-                },
-                'val-birthday':{
-                    required:'Please choose your birthday'
-                },
-                'val-gender':{
-                    required:'Please select gender',
-                }
             }
         });
     };
+
 
     // Init Material Forms Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
     var initValidationMaterial = function(){
@@ -203,6 +280,9 @@ var BeFormValidation = function() {
         init: function () {
             // Init Bootstrap Forms Validation
             initValidationBootstrap();
+
+            // Init Bootstrap Forms Validation
+            initValidationBootstrap2();
 
             // Init Material Forms Validation
             initValidationMaterial();

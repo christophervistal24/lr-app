@@ -28,11 +28,21 @@ class Admin extends Database
    public $confirm_password;
    protected $password_required = true;
 
-   public function login($username)
+   public function __construct($args = [])
    {
-     $result = self::$database->query("SELECT * FROM admin WHERE username='{$username}'");
-     $fetch_data = $result->fetch(PDO::FETCH_ASSOC);
-     return $fetch_data['username'];
+      // $this->username   = $args['username'] ?? '';
+      // $this->firstname  = $args['firstname'] ?? '';
+      // $this->middlename = $args['middlename'] ?? '';
+      // $this->lastname   = $args['lastname'] ?? '';
+      // $this->email      = $args['email'] ?? '';
+      // $this->password   = $args['password'];
+      // $this->confirm_password = $args['confirm_password'];
    }
 
+   public function check($username)
+   {
+     $result = self::$database->query("SELECT id FROM admins WHERE username=$username");
+     $fetch_data = $result->fetch(PDO::FETCH_ASSOC);
+     return $fetch_data;
+   }
 }

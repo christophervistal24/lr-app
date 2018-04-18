@@ -10,31 +10,24 @@ class Page extends Controller
         $this->admin = $this->model('Admin');
     }
 
-    // Login page
     public function login()
     {
-        Controller::view('layouts/header',[]);
-        if(isset($_POST['login-username'])){
-            $username = $_POST['login-username'];
-            print_r($this->admin->login($username));
-        }
+        // Controller::view('layouts/header',[]);
         Controller::view('login',[]);
         Controller::view('layouts/footer',[]);
     }
 
-    // Dashboard page
-    public function index()
+    public function signup()
     {
-        Controller::view('layouts/header',[]);
-        Controller::view('admin/index',[]);
+        // Controller::view('layouts/header',[]);
+        Controller::view('signup',[]);
         Controller::view('layouts/footer',[]);
     }
 
-    // Sign up page
-    public function signup()
+    public function dashboard()
     {
         Controller::view('layouts/header',[]);
-        Controller::view('signup',[]);
+        Controller::view('admin/dashboard',[]);
         Controller::view('layouts/footer',[]);
     }
 
@@ -51,4 +44,7 @@ class Page extends Controller
         Controller::view('admin/changeinfo',[]);
         Controller::view('layouts/footer',[]);
     }
+
+
+
 }

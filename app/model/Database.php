@@ -5,7 +5,7 @@ class Database
     const DB_SERVER = 'localhost';
     const DB_USER   = 'root';
     const DB_PASS   = '';
-    protected static $database;
+    public static $database;
     protected static $table_name = "";
     protected $column = [];
     public $errors = [];
@@ -16,6 +16,7 @@ class Database
     {
        self::$database = new PDO('mysql:host='.self::DB_SERVER.';dbname='.self::DB_NAME.'', self::DB_USER,self::DB_PASS);
     }
+
 
     public static function find_by_sql($sql)
     {
