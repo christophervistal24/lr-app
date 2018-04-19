@@ -26,7 +26,7 @@
                 <!-- Sign In Form -->
                 <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                <form class="js-validation-signin px-30" action="be_pages_auth_all.html" method="post">
+                <form class="" action="" method="post">
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">

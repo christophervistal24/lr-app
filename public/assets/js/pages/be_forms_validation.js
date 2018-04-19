@@ -7,9 +7,7 @@ var BeFormValidation = function() {
     // Init Bootstrap Forms Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
     var initValidationBootstrap = function(){
         jQuery('.js-validation-bootstrap').validate({
-            submitHandler:function(form){
-                form.submit();
-            },
+            debug: false,
             ignore: [],
             errorClass: 'invalid-feedback animated fadeInDown',
             errorElement: 'div',
@@ -24,7 +22,7 @@ var BeFormValidation = function() {
                 jQuery(e).remove();
             },
             rules: {
-                'admin[val-username]': {
+                'admin[username]': {
                     required: true,
                     minlength: 5,
                     remote:{
@@ -39,9 +37,9 @@ var BeFormValidation = function() {
                                 return 'checkUsername';
                             }
                         },
-                    },
+                    }
                 },
-                'admin[val-email]': {
+                'admin[email]': {
                     required: true,
                     email: true,
                     remote:{
@@ -58,74 +56,78 @@ var BeFormValidation = function() {
                         },
                     }
                 },
-                'admin[val-password]': {
+                'admin[password]': {
                     required: true,
                     minlength: 8
                 },
-                'admin[val-confirm-password]': {
+                'admin[confirm_password]': {
                     required: true,
-                    equalTo: '#val-password',
+                    equalTo: '#password',
                     minlength :8
                 },
-                'admin[val-firstname]': {
+                'admin[firstname]': {
                     required: true,
                     minlength:5,
 
                 },
-                'admin[val-middlename]':{
+                'admin[middlename]':{
                     required:true,
                     minlength:2,
 
                 },
-                'admin[val-lastname]':{
+                'admin[lastname]':{
                     required:true,
                     minlength:5,
 
                 },
-                'admin[val-birthday]':{
+                'admin[birthday]':{
                     required:true,
                 },
-                'admin[val-gender]':{
+                'admin[gender]':{
                     required:true,
-                }
+                },
             },
             messages: {
-                'admin[val-username]': {
+                'admin[username]': {
                     required: 'Please enter a username',
                     minlength: 'Your username must consist of at least 5 characters',
                     remote:$.validator.format("{0} Already exists"),
                 },
-                'admin[val-email]':{
+                'admin[email]':{
                  required: 'Please enter a valid email address',
                  remote:$.validator.format("{0}  Already exists"),
                 },
-                'admin[val-password]': {
+                'admin[password]': {
                     required: 'Please provide a password',
                     minlength: 'Your password must be at least 8 characters long'
                 },
-                'admin[val-confirm-password]': {
+                'admin[confirm_password]': {
                     required: 'Please provide a password',
                     minlength: 'Your password must be at least 8 characters long',
                     equalTo: 'Please enter the same password as above'
                 },
-                'admin[val-firstname]':{
+                'admin[firstname]':{
                     required: 'Please enter firstname',
                     minlength: 'Your password must be at least 5 characters long',
                 },
-                'admin[val-middlename]':{
+                'admin[middlename]':{
                     required:'Please enter middlename',
                     minlength:'Your middlename must be at least 2 characters long'
                 },
-                'vadmin[al-lastname]':{
+                'vadmin[lastname]':{
                     required:'Please enter lastname',
                     minlength:'Your lastname must be at least 5 characters long'
                 },
-                'admin[val-birthday]':{
+                'admin[birthday]':{
                     required:'Please choose your birthday'
                 },
-                'admin[val-gender]':{
+                'admin[gender]':{
                     required:'Please select gender',
-                }
+                },
+            },
+            submitHandler: function (form) {
+                alert('Testing');
+                form.submit();
             }
         });
     };

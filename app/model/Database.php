@@ -11,13 +11,12 @@ class Database
     public $errors = [];
 
 
-
     public function __construct()
     {
        self::$database = new PDO('mysql:host='.self::DB_SERVER.';dbname='.self::DB_NAME.'', self::DB_USER,self::DB_PASS);
     }
 
-    public function connect()
+    public function getInstance()
     {
       return self::$database;
     }
@@ -34,15 +33,19 @@ class Database
 
     public function create($values)
     {
+      $time = time();
+      $values['image'] = $values['image'] ?? 'noimage.jpg';
       $columns = $this->attributes();
       $sql =
       "
       INSERT INTO admins (" . join(",",$columns) . ")
       VALUES
-      ('$values[username]','$values[password]','{time()}','0','$values[firstname]','$values[middlename]','$values[lastname]','$values[gender]','$values[birthday]','$values[email]','$values[image]');
+      ('$values[username]','$values[password]','$time','0','$values[firstname]','$values[middlename]','$values[lastname]','$values[gender]','$values[birthday]','$values[email]','$values[image]');
       ";
       $result =  self::$database->query($sql);
-      return $result;
+      if($result){
+        return true;
+      }
     }
 
 }

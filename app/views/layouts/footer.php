@@ -20,7 +20,10 @@
 <script src="../../public/assets/js/plugins/jquery-auto-complete/jquery.auto-complete.min.js"></script>
 <script src="../../public/assets/js/plugins/masked-inputs/jquery.maskedinput.min.js"></script>
 <script src="../../public/assets/js/plugins/select2/select2.full.min.js"></script>
-<script src="../../public/assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../public/assets/js/custom.js"></script>
 <!-- Page JS Code -->
 <script>
 jQuery(function () {
@@ -33,6 +36,5 @@ Codebase.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-i
 });
 </script>
 </script>
-<script src="../../public/assets/js/pages/be_forms_validation.js"></script>
 </body>
 </html>

@@ -20,15 +20,17 @@ class Admin extends Database
 
    protected $args = [];
 
-   public function __construct($args = [])
+   public function __construct()
    {
 
-      $this->args = $this->set_hash($args);
    }
 
-   public function create_new_user()
+   public function create_new_user($args = [])
    {
-      parent::create($this->args);
+      $this->args = $this->set_hash($args);
+      if(parent::create($this->args)){
+        return true;
+      }
    }
 
   /* public function check($value,$column)

@@ -14,7 +14,7 @@
             <div class="col-xl-6">
                 <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                <form action="" method="post">
+                <form id="createAccount" action="" method="post">
                     <div class="form-group row">
                         <label class="col-lg-4 col-form-label" for="val-username">Username <span class="text-danger">*</span></label>
                         <div class="col-lg-8"><input type="text" class="form-control" id="val-username" name="admin[username]" placeholder="Enter a username.."></div>
@@ -57,9 +57,10 @@
         <div class="form-group row">
             <label class="col-lg-4 col-form-label" for="example-file-input-custom">Image (Optional) <span class="text-danger">*</span></label>
             <div class="col-lg-8">
-                <label class="custom-file"><input type="file" class="custom-file-input" id="example-file-input-custom" name="admin[image]"> <span class="custom-file-control">Browse</span></label></div>
+                <label class="custom-file"><input type="file"  id="example-file-input-custom" name="admin[image]"> <span class="custom-file-control">Browse</span></label></div>
             </div>
-            <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary">Submit</button></div>
+            <div class="form-group row col-lg-8 ml-auto"><input value="Submit" type="submit" class="btn btn-alt-primary"></div>
+            <input type="hidden" name="action" value="_create">
         </form>
     </div>
 </div>
