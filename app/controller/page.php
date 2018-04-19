@@ -7,7 +7,6 @@ class Page extends Controller
     public function __construct()
     {
         $this->model = $this->model('Database');
-        $this->admin = $this->model('Admin');
     }
 
     public function login()
@@ -34,6 +33,10 @@ class Page extends Controller
     public function createnew()
     {
         Controller::view('layouts/header',[]);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $args = $_POST['admin'];
+            $this->model('Admin',$args)->create_new_user();
+        }
         Controller::view('admin/createnew',[]);
         Controller::view('layouts/footer',[]);
     }

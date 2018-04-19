@@ -21,7 +21,6 @@
 <script src="../../public/assets/js/plugins/masked-inputs/jquery.maskedinput.min.js"></script>
 <script src="../../public/assets/js/plugins/select2/select2.full.min.js"></script>
 <script src="../../public/assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
-<script src="../../public/assets/js/plugins/jquery-validation/additional-methods.min.js"></script>
 <!-- Page JS Code -->
 <script>
 jQuery(function () {

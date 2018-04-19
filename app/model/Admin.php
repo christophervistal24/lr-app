@@ -1,11 +1,12 @@
 <?php
 class Admin extends Database
 {
-  static protected $table_name = "admin";
+  static protected $table_name = "admins";
+
   static protected $db_columns = [
     'id',
     'username',
-    'password_hash',
+    'password',
     'created_at',
     'updated_at',
     'firstname',
@@ -17,32 +18,33 @@ class Admin extends Database
     'image',
    ];
 
-   public $id;
-   public $username;
-   public $firstname;
-   public $middlename;
-   public $lastname;
-   public $email;
-   protected $password_hash;
-   public $password;
-   public $confirm_password;
-   protected $password_required = true;
+   protected $args = [];
 
    public function __construct($args = [])
    {
-      // $this->username   = $args['username'] ?? '';
-      // $this->firstname  = $args['firstname'] ?? '';
-      // $this->middlename = $args['middlename'] ?? '';
-      // $this->lastname   = $args['lastname'] ?? '';
-      // $this->email      = $args['email'] ?? '';
-      // $this->password   = $args['password'];
-      // $this->confirm_password = $args['confirm_password'];
+
+      $this->args = $this->set_hash($args);
    }
 
-   public function check($username)
+   public function create_new_user()
    {
-     $result = self::$database->query("SELECT id FROM admins WHERE username=$username");
-     $fetch_data = $result->fetch(PDO::FETCH_ASSOC);
-     return $fetch_data;
+      parent::create($this->args);
+   }
+
+  /* public function check($value,$column)
+   {
+          $result =  self::$database->query("SELECT " . $column . " FROM " . self::$table_name . " WHERE " . $column . " ='{$value}'");
+          $stmt =  $result->fetch(PDO::FETCH_ASSOC);
+          return $stmt[$column];
+   }*/
+
+   private function set_hash($array = [])
+   {
+      foreach ($array as $key => $value) {
+        if ($key == 'password') {
+            $array[$key] = password_hash($value,PASSWORD_BCRYPT);
+        }
+      }
+      return $array;
    }
 }

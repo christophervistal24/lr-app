@@ -3,11 +3,13 @@
  *  Author     : pixelcave
  *  Description: Custom JS code used in Form Validation Page
  */
-
 var BeFormValidation = function() {
     // Init Bootstrap Forms Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
     var initValidationBootstrap = function(){
         jQuery('.js-validation-bootstrap').validate({
+            submitHandler:function(form){
+                form.submit();
+            },
             ignore: [],
             errorClass: 'invalid-feedback animated fadeInDown',
             errorElement: 'div',
@@ -37,7 +39,7 @@ var BeFormValidation = function() {
                                 return 'checkUsername';
                             }
                         },
-                    }
+                    },
                 },
                 'admin[val-email]': {
                     required: true,
@@ -67,15 +69,18 @@ var BeFormValidation = function() {
                 },
                 'admin[val-firstname]': {
                     required: true,
-                    minlength:5
+                    minlength:5,
+
                 },
                 'admin[val-middlename]':{
                     required:true,
-                    minlength:2
+                    minlength:2,
+
                 },
                 'admin[val-lastname]':{
                     required:true,
-                    minlength:5
+                    minlength:5,
+
                 },
                 'admin[val-birthday]':{
                     required:true,
@@ -88,11 +93,11 @@ var BeFormValidation = function() {
                 'admin[val-username]': {
                     required: 'Please enter a username',
                     minlength: 'Your username must consist of at least 5 characters',
-                    remote:$.validator.format("{0} is already exists"),
+                    remote:$.validator.format("{0} Already exists"),
                 },
                 'admin[val-email]':{
                  required: 'Please enter a valid email address',
-                 remote:$.validator.format("{0} is already exists"),
+                 remote:$.validator.format("{0}  Already exists"),
                 },
                 'admin[val-password]': {
                     required: 'Please provide a password',
