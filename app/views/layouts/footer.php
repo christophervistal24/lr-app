@@ -38,3 +38,4 @@ Codebase.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-i
 </script>
 </body>
 </html>
+<?php ob_end_flush(); ?>

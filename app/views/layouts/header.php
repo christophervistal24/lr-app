@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <!--[if lte IE 9]>     <html lang="en" class="no-focus lt-ie10 lt-ie10-msg"> <![endif]-->
 <!--[if gt IE 9]><!--> <html lang="en" class="no-focus"> <!--<![endif]-->
@@ -63,6 +65,7 @@
     'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
     'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
     -->
+    <?php if (!empty($_SESSION)): ?>
     <div id="page-container" class="sidebar-o side-scroll page-header-modern main-content-boxed">
         <!-- Side Overlay-->
         <aside id="side-overlay">
@@ -420,7 +423,7 @@
                                     </a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="link-effect text-dual-primary-dark" href="op_auth_signin.html">
+                                    <a class="link-effect text-dual-primary-dark" href="logout">
                                         <i class="si si-logout"></i>
                                     </a>
                                 </li>
@@ -624,3 +627,4 @@
         <main id="main-container">
             <!-- Page Content -->
             <div class="content">
+<?php endif ?>

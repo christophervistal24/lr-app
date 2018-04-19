@@ -18,11 +18,21 @@ class Admin extends Database
     'image',
    ];
 
+   public $id;
+   public $firstname;
+   public $middlename;
+   public $lastname;
+   public $username;
+   public $email;
+   public $gender;
+   public $birthday;
+   public $image;
    protected $args = [];
+   protected $utilities;
 
    public function __construct()
    {
-
+      $this->utilities = new Utilities;
    }
 
    public function create_new_user($args = [])
@@ -33,12 +43,23 @@ class Admin extends Database
       }
    }
 
-  /* public function check($value,$column)
+
+   // Add some extra security
+   public function check($username,$input_password)
    {
-          $result =  self::$database->query("SELECT " . $column . " FROM " . self::$table_name . " WHERE " . $column . " ='{$value}'");
-          $stmt =  $result->fetch(PDO::FETCH_ASSOC);
-          return $stmt[$column];
-   }*/
+       $user_data = $this->find_by_username($username);
+       if(password_verify($input_password,$user_data['password'])){
+          $new_user_data = $this->utilities->array_except($user_data,['password','created_at','updated_at']);
+          $_SESSION['id'] = $new_user_data['id'];
+          header("Location:dashboard");
+       }else{
+          echo "<script>
+            $(document).ready(function(){
+                swal('Message', 'Please check your username or password', 'error');
+              });
+          </script>";
+       }
+   }
 
    private function set_hash($array = [])
    {

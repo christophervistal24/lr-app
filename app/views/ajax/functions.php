@@ -21,10 +21,7 @@ $Admin = new Admin;
             break;
 
             case '_create':
-                function array_except($array, $keys) {
-                  return array_diff_key($array, array_flip((array) $keys));
-                }
-                $output = array_except($_POST, ['action']);
+                $output = $Util->array_except($_POST, ['action']);
                 if($Admin->create_new_user($output['admin'])){
                   echo json_encode(['success'=>true]);
                 }else{

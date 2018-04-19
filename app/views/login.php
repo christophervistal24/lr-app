@@ -1,17 +1,13 @@
 <!-- Page Content -->
-<div class="bg-image" style="background-image: url('assets/img/photos/photo34@2x.jpg');">
+<div class="bg-image" style="background-image: url('../../public/assets/img/photos/land.jpg');">
     <div class="row mx-0 bg-black-op">
         <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
             <div class="p-30 invisible" data-toggle="appear">
                 <p class="font-size-h3 font-w600 text-white">
-                    Get Inspired and Create.
-                </p>
-                <p class="font-italic text-white-op">
-                    Copyright &copy; <span class="js-year-copy">2017</span>
                 </p>
             </div>
         </div>
-        <div class="hero-static col-md-6 col-xl-4 d-flex align-items-center bg-white invisible" data-toggle="appear" data-class="animated fadeInRight">
+        <div class="hero-static col-md-6 col-xl-4 d-flex align-items-center bg-white invisible" data-toggle="appear" data-class="">
             <div class="content content-full">
                 <!-- Header -->
                 <div class="px-30 py-10">
@@ -26,11 +22,11 @@
                 <!-- Sign In Form -->
                 <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                <form class="" action="" method="post">
+                <form action="" method="POST">
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
-                                <input type="text" class="form-control" id="login-username" name="login-username">
+                                <input type="text" class="form-control" id="login-username" name="username">
                                 <label for="login-username">Username</label>
                             </div>
                         </div>
@@ -38,7 +34,7 @@
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
-                                <input type="password" class="form-control" id="login-password" name="login-password">
+                                <input type="password" class="form-control" id="login-password" name="password">
                                 <label for="login-password">Password</label>
                             </div>
                         </div>

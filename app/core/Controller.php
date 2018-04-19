@@ -3,11 +3,11 @@ class Controller
 {
 
     // Method for Injecting model or Database
-    public function model($model , $data = [])
+    public function model($model)
     {
         if(file_exists('../app/model/' . $model . '.php')){
             require_once '../app/model/' . $model . '.php';
-            return new $model($data);
+            return new $model;
         }
     }
 

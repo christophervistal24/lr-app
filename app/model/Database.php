@@ -31,6 +31,7 @@ class Database
       return $attributes;
     }
 
+    // Change with Join
     public function create($values)
     {
       $time = time();
@@ -47,6 +48,15 @@ class Database
         return true;
       }
     }
+
+    public function find_by_username($username)
+    {
+      $sql = "SELECT * FROM " . static::$table_name . " WHERE username='{$username}'";;
+      $result = self::$database->query($sql);
+      $fetch_data = $result->fetch(PDO::FETCH_ASSOC);
+      return $fetch_data;
+    }
+
 
 }
 
