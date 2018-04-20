@@ -78,7 +78,7 @@ $File  = new File;
                     <p>This message was sent by (NAME OF APP). Visit (LINK OF SITE) to learn more.</p>
                     <p>If you received this email by mistake or believe it is spam, please forward it to (SUPPORT EMAIL)</p>
                   ";
-                  $mailer->Subject = 'Demonstration';
+                  $mailer->Subject = 'SDSSU (FES)';
                   $mailer->AddAddress($email);
                   if($mailer->send()) {
                     echo json_encode(['success'=>true,'message'=>'Please check your email']);
@@ -98,13 +98,20 @@ $File  = new File;
           $email        = $Util->e($email);
           $token        = $Util->e($token);
           $new_password = password_hash($new_password,PASSWORD_DEFAULT);
-          $user_id = $DB->query("SELECT id,password FROM admins WHERE email='$email'")->fetch(PDO::FETCH_ASSOC);
-          if(count($user_id) > 0){
-              $id = $user_id['id'];
-              $stmt = $DB->query("UPDATE admins JOIN forgot_password ON forgot_password.user_id = admins.id SET admins.password = '$new_password' , forgot_password.token = 0 , forgot_password.token_expire = 0 WHERE admins.id = '$id'");
-              if($stmt){
-                echo json_encode(['success'=>true,'message'=>'Successfully changed your password']);
+          $user = $DB->query("SELECT admins.id,forgot_password.token_expire FROM admins INNER JOIN forgot_password ON admins.id = forgot_password.user_id WHERE admins.email='$email'
+                                ")->fetch(PDO::FETCH_ASSOC);
+          if(count($user) > 0){
+              $id = $user['id'];
+              $date = $user['token_expire'];
+              if(time() >= $date){
+                  echo json_encode(['success'=>false,'message'=>'Please request another forgot password']);
+              }else{
+                 $stmt = $DB->query("UPDATE admins JOIN forgot_password ON forgot_password.user_id = admins.id SET admins.password = '$new_password' , forgot_password.token = 0 , forgot_password.token_expire = 0 WHERE admins.id = '$id'");
+                  if($stmt){
+                    echo json_encode(['success'=>true,'message'=>'Successfully changed your password']);
+                  }
               }
+
           }
           break;
 
