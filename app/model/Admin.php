@@ -40,26 +40,32 @@ class Admin extends Database
       $args = $this->utilities->array_except($args,['confirm_password']);
       $this->args = $this->set_hash($args);
       if(parent::create($this->args)){
-        return true;
+          $this->id = self::$database->lastInsertId();
+          $result = self::$database->exec("
+          INSERT INTO forgot_password (user_id,token,token_expire)
+          VALUES ('$this->id','',0)
+                                 ");
+          if($result){
+            return true;
+          }
       }
    }
-
 
    // Add some extra security
    public function check($username,$input_password)
    {
-       $user_data = $this->find_by_username($username);
+       $user_data = $this->find_by_username($username,'username');
        if(password_verify($input_password,$user_data['password'])){
           $new_user_data = $this->utilities->array_except($user_data,['password','created_at','updated_at']);
           $_SESSION['id'] = $new_user_data['id'];
           header("Location:dashboard");
-       }else{
-          echo "<script>
-            $(document).ready(function(){
-                swal('Message', 'Please check your username or password', 'error');
-              });
-          </script>";
-       }
+       }else{return;}
+   }
+
+   public function find_by($username,$ret_column)
+   {
+      $data = $this->find_by_username($username,$ret_column);
+      return $data[$ret_column];
    }
 
    private function set_hash($array = [])
@@ -71,4 +77,5 @@ class Admin extends Database
       }
       return $array;
    }
+
 }

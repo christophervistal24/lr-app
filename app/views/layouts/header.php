@@ -23,6 +23,11 @@
     <link rel="icon" type="image/png" sizes="192x192" href="../../public/assets/img/favicons/favicon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../public/assets/img/favicons/apple-touch-icon-180x180.png">
     <!-- END Icons -->
+    <style type="text/css">
+        body{
+            overflow-x: hidden;
+        }
+    </style>
     <!-- Stylesheets -->
     <!-- Codebase framework -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

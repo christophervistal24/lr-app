@@ -24,6 +24,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../../public/assets/js/custom.js"></script>
+<script src="../../public/assets/js/forgot.js"></script>
 <!-- Page JS Code -->
 <script>
 jQuery(function () {

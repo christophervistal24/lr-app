@@ -29,6 +29,13 @@ class Page extends Controller
         Controller::view('layouts/footer',[]);
     }
 
+    public function forgot()
+    {
+        Controller::view('layouts/header',[]);
+        Controller::view('forgot_password',[]);
+        Controller::view('layouts/footer',[]);
+    }
+
     public function dashboard()
     {
         Controller::view('layouts/header',[]);

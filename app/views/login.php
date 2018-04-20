@@ -7,7 +7,7 @@
                 </p>
             </div>
         </div>
-        <div class="hero-static col-md-6 col-xl-4 d-flex align-items-center bg-white invisible" data-toggle="appear" data-class="">
+        <div class="hero-static col-md-6 col-xl-4 d-flex align-items-center bg-white invisible" data-toggle="appear" data-class="animated fadeInRight">
             <div class="content content-full">
                 <!-- Header -->
                 <div class="px-30 py-10">
@@ -48,15 +48,16 @@
                             </label>
                         </div>
                     </div>
+                    <input type="text" class="form-control" name="token" value="<?php echo uniqid(md5(rand(1,100))); ?>">
                     <div class="form-group">
                         <button type="submit" class="btn btn-sm btn-hero btn-alt-primary">
                         <i class="si si-login mr-10"></i> Sign In
                         </button>
                         <div class="mt-30">
-                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="op_auth_signup2.html">
+                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="">
                                 <i class="fa fa-plus mr-5"></i> Create Account
                             </a>
-                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="op_auth_reminder2.html">
+                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="forgot">
                                 <i class="fa fa-warning mr-5"></i> Forgot Password
                             </a>
                         </div>

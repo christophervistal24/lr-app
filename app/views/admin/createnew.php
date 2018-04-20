@@ -55,10 +55,11 @@
             </select></div>
         </div>
         <div class="form-group row">
-            <label class="col-lg-4 col-form-label" for="example-file-input-custom">Image (Optional) <span class="text-danger">*</span></label>
+            <label class="col-lg-4 col-form-label" for="example-file-input-custom">Profile picture <span class="text-danger">*</span></label>
             <div class="col-lg-8">
-                <input type="file" name="image"> <span class="custom-file-control">Browse</span>
+                <input type="file" style="cursor: pointer;" class="custom-file-input" id="example-file-input-custom"  name="image"> <span class="custom-file-control">Browse</span>
             </div>
+        </div>
             <div class="form-group row col-lg-8 ml-auto"><input value="Submit" type="submit" class="btn btn-alt-primary"></div>
             <input type="hidden" name="action" value="_create">
         </form>
