@@ -1,7 +1,6 @@
 <?php
 class Controller
 {
-
     // Method for Injecting model or Database
     public function model($model)
     {

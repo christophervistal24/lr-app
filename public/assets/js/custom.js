@@ -87,15 +87,17 @@ $(document).ready(function(){
                     required:'Please select gender',
                 },
                  'admin[image]':{
-                    required:'Please select gender',
+                    required:'Please upload some image',
                 }
              },
               submitHandler: function(form){
                 $.ajax({
                     url:'/../../lr-app/app/views/ajax/functions.php',
-                    type:"post",
+                    type:"POST",
                     dataType:"json",
-                    data:$(form).serialize(),
+                    data:new FormData(form),
+                    processData : false,
+                    contentType:false,
                     success:function(data){
                         if(data.success == true){
                             swal("Success!", "Successfully create new account", "success");

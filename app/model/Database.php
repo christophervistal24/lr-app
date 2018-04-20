@@ -31,18 +31,16 @@ class Database
       return $attributes;
     }
 
-    // Change with Join
     public function create($values)
     {
-      $time = time();
-      $values['image'] = $values['image'] ?? 'noimage.jpg';
-      $columns = $this->attributes();
       $sql =
       "
-      INSERT INTO admins (" . join(",",$columns) . ")
+      INSERT INTO admins (" . implode(",",array_keys($values)) . ")
       VALUES
-      ('$values[username]','$values[password]','$time','0','$values[firstname]','$values[middlename]','$values[lastname]','$values[gender]','$values[birthday]','$values[email]','$values[image]');
+      (" . "'". implode("','",array_values($values)) . "'" . ")
       ";
+
+
       $result =  self::$database->query($sql);
       if($result){
         return true;

@@ -3,9 +3,6 @@
         <h3 class="block-title">Blank <small>Get Started</small></h3>
     </div>
     <div class="block-content">
-        <?php
-            echo $_SESSION['id'];
-        ?>
     </div>
     <!-- END OF BLOCK-CONTENT -->
 </div>

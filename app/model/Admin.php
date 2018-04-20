@@ -37,6 +37,7 @@ class Admin extends Database
 
    public function create_new_user($args = [])
    {
+      $args = $this->utilities->array_except($args,['confirm_password']);
       $this->args = $this->set_hash($args);
       if(parent::create($this->args)){
         return true;
