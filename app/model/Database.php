@@ -5,7 +5,7 @@ class Database
     const DB_SERVER = 'localhost';
     const DB_USER   = 'root';
     const DB_PASS   = '';
-    public static $database;
+    protected static $database;
     protected static $table_name = "";
     protected static $db_columns = [];
     public $errors = [];
@@ -21,42 +21,59 @@ class Database
       return self::$database;
     }
 
-    protected function attributes()
+    public function create_new_record($values)
     {
-      $attributes = [];
-      foreach (static::$db_columns as $key => $value) {
-        if($value === 'id'){continue;}
-        $attributes[] = $value;
-      }
-      return $attributes;
-    }
-
-    public function create($values)
-    {
-      /**
-       *  columns username,email,password,firstname,middlename,lastname,birthday,gender,image
-       *  values 'christopher','christophervistal24@gmail.com','$2y$10$ByVMXHwyimOfFYao/4iD/.A8Eny0nYPKXgQBCT6wa0rsAUq.sdU3G','christopher','platino','vistal','05/12/18','male','24463148_558681957799765_640822417_o.jpg'
-       */
-      $sql =
-      "
-      INSERT INTO admins (" . implode(",",array_keys($values)) . ")
-      VALUES
-      (" . "'". implode("','",array_values($values)) . "'" . ")
-      ";
-      $result =  self::$database->query($sql);
-      if($result){
-        return true;
+      try {
+          $result = self::$database
+                    ->query("
+               INSERT INTO " . static::$table_name . " (" . implode(",",array_keys($values)) . ")
+               VALUES
+               (" . "'". implode("','",array_values($values)) . "'" . ")
+                    ");
+          return (bool) $result;
+      } catch (Exception $e) {
+          die($e->getMessage());
       }
     }
 
-    public function find_by_username($username,$column)
+    // Read Records
+    protected static function get_values($value,$column,$retrieve = [])
     {
-      $sql = "SELECT * FROM " . static::$table_name . " WHERE ".$column."='{$username}'";;
-      $result = self::$database->query($sql);
-      $fetch_data = $result->fetch(PDO::FETCH_ASSOC);
-      return $fetch_data;
+      try {
+          $result = self::$database->query("
+              SELECT " . implode(",",array_values($retrieve)) . "
+              FROM " . static::$table_name . "
+              WHERE " .$column."=
+              '" . $value . "'
+        ");
+          $fetch_data = $result->fetch(PDO::FETCH_ASSOC);
+          return $fetch_data;
+      } catch (Exception $e) {
+        die($e->getMessage());
+      }
     }
 
+    // Update Record
+    public static function update_record($data = [])
+    {
+      $cols = null;
+      $no_of_rows = count($data);
+        $i = 1;
+        foreach ($data as $key => $value) {
+            $cols .= $key. "='". $value . '\'';
+            if($i !== $no_of_rows -1 && $i !== $no_of_rows)
+            {
+                $cols .= ',';
+            }
+            $i++;
+        }
+        try {
+              $result =  self::$database->query('UPDATE admins SET '. $cols . ' ');
+              return (bool) $result;
+        } catch (Exception $e) {
+          die($e->getMessage());
+        }
+    }
 
 }
 

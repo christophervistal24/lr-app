@@ -9,6 +9,7 @@
             </button>
         </div>
     </div>
+    
     <div class="block-content">
         <div class="row justify-content-center py-20">
             <div class="col-xl-6">
@@ -21,6 +22,7 @@
                     </div>
                     <div class="form-group row"><label class="col-lg-4 col-form-label" for="val-email">Email <span class="text-danger">*</span></label>
                     <div class="col-lg-8"><input type="text" class="form-control" id="val-email" name="admin[email]" placeholder="Your valid email..">
+                <?php echo "";?>
                 </div>
             </div>
             <div class="form-group row"><label class="col-lg-4 col-form-label" for="val-password">Password <span class="text-danger">*</span></label>

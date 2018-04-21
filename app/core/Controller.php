@@ -10,6 +10,11 @@ class Controller
         }
     }
 
+    public function redirect($url)
+    {
+        header("Location:" . $url);
+    }
+
     // Method for Injecting view to the document
     public function view($view , $data = [])
     {

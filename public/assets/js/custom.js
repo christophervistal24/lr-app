@@ -16,10 +16,36 @@ $(document).ready(function(){
                 'admin[username]': {
                     required: true,
                     minlength: 5,
+                    remote:{
+                        url:"/../../lr-app/app/views/ajax/functions.php",
+                        type:"POST",
+                        dataType :"json",
+                        data: {
+                            username: function(){
+                                return $("#val-username").val();
+                            },
+                            action: function(){
+                                return 'check_username';
+                            }
+                        },
+                    }
                 },
                 'admin[email]': {
                     required: true,
                     email: true,
+                    remote:{
+                        url:"/../../lr-app/app/views/ajax/functions.php",
+                        type:"POST",
+                        dataType :"json",
+                        data: {
+                            email: function(){
+                                return $("#val-email").val();
+                            },
+                            action: function(){
+                                return 'check_email';
+                            }
+                        },
+                    }
                 },
                 'admin[password]': {
                     required: true,
@@ -54,10 +80,13 @@ $(document).ready(function(){
             },
             messages: {
                 'admin[username]': {
-                    required: 'Please enter a username'
+                    required: 'Please enter a username',
+                    minlength:"Username must be minimum of {0} characters",
+                    remote:$.validator.format("{0} is already exists")
                 },
                 'admin[email]':{
-                 required: 'Please enter a valid email address'
+                 required: 'Please enter a valid email address',
+                 remote:$.validator.format("{0} is already exists")
                 },
                 'admin[password]': {
                     required: 'Please provide a password',

@@ -18,7 +18,7 @@ class Admin extends Database
     'image',
    ];
 
-   public $id;
+  /* public $id;
    public $firstname;
    public $middlename;
    public $lastname;
@@ -27,8 +27,7 @@ class Admin extends Database
    public $gender;
    public $birthday;
    public $image;
-   protected $args = [];
-   protected $utilities;
+   protected $utilities;*/
 
    public function __construct()
    {
@@ -37,45 +36,36 @@ class Admin extends Database
 
    public function create_new_user($args = [])
    {
-      $args = $this->utilities->array_except($args,['confirm_password']);
-      $this->args = $this->set_hash($args);
-      if(parent::create($this->args)){
-          $this->id = self::$database->lastInsertId();
-          $result = self::$database->exec("
-          INSERT INTO forgot_password (user_id,token,token_expire)
-          VALUES ('$this->id','',0)
-                                 ");
-          if($result){
-            return true;
-          }
+      $hashed_pass = $this->utilities->set_hash($args);
+      $record      = $this->utilities->array_except($hashed_pass,['confirm_password']);
+      if(parent::create_new_record($record)){
+          $admin_id = self::$database->lastInsertId();
+          $result   = self::$database
+              ->exec("
+               INSERT INTO forgot_password (user_id,token,token_expire)
+               VALUES ('$admin_id','',0)
+           ");
+          return (bool) $result;
       }
    }
+
 
    // Add some extra security
    public function check($username,$input_password)
    {
-       $user_data = $this->find_by_username($username,'username');
-       if(password_verify($input_password,$user_data['password'])){
-          $new_user_data = $this->utilities->array_except($user_data,['password','created_at','updated_at']);
-          $_SESSION['id'] = $new_user_data['id'];
-          header("Location:dashboard");
-       }else{return;}
+        // if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        // }
+       // $user_data = $this->find_by_username($username,'username');
+       // if(password_verify($input_password,$user_data['password'])){
+       //    $new_user_data = $this->utilities->array_except($user_data,['password','created_at','updated_at']);
+       //    $_SESSION['id'] = $new_user_data['id'];
+       //    header("Location:dashboard");
+       // }else{return;}
    }
 
-   public function find_by($username,$ret_column)
+   public function find_by($value,$column,$retrieve = [])
    {
-      $data = $this->find_by_username($username,$ret_column);
-      return $data[$ret_column];
-   }
-
-   private function set_hash($array = [])
-   {
-      foreach ($array as $key => $value) {
-        if ($key == 'password') {
-            $array[$key] = password_hash($value,PASSWORD_BCRYPT);
-        }
-      }
-      return $array;
+      return parent::get_values($value,$column,$retrieve);
    }
 
 }

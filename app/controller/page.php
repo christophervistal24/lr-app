@@ -14,10 +14,7 @@ class Page extends Controller
 
     public function login()
     {
-        Controller::view('layouts/header',[]);
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            print_r($this->admin->check($_POST['username'],$_POST['password']));
-        }
+        Controller::view('layouts/header',['title'=>' | Home']);
         Controller::view('login',[]);
         Controller::view('layouts/footer',[]);
     }
@@ -31,28 +28,28 @@ class Page extends Controller
 
     public function forgot()
     {
-        Controller::view('layouts/header',[]);
+        Controller::view('layouts/header',['title'=>' | Forgot password']);
         Controller::view('forgot_password',[]);
         Controller::view('layouts/footer',[]);
     }
 
     public function dashboard()
     {
-        Controller::view('layouts/header',[]);
+        Controller::view('layouts/header',['title'=>' | Dashboard']);
         Controller::view('admin/dashboard',[]);
         Controller::view('layouts/footer',[]);
     }
 
     public function createnew()
     {
-        Controller::view('layouts/header',[]);
+        Controller::view('layouts/header',['title'=>' | Create new account']);
         Controller::view('admin/createnew',[]);
         Controller::view('layouts/footer',[]);
     }
 
     public function changeinfo()
     {
-        Controller::view('layouts/header',[]);
+        Controller::view('layouts/header',['title'=>' | Change Profile']);
         Controller::view('admin/changeinfo',[]);
         Controller::view('layouts/footer',[]);
     }
