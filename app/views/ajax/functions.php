@@ -6,32 +6,32 @@ $DB = $database->getInstance();
         $action = trim($_POST['action']);
         switch ($action) {
 
-            case 'check_username':
-               $username = $Util->e($_POST['username']);
-               echo json_encode($Admin->find_by($username,'username',['username']) ? false: true);
-             break;
+          case 'check_username':
+             $username = $Util->e($_POST['username']);
+             echo json_encode($Admin->find_by($username,'username',['username']) ? false: true);
+          break;
 
-            case 'check_email':
-               $email = $Util->e($_POST['email']);
-               echo json_encode($Admin->find_by($email,'email',['email']) ? false : true);
-            break;
+          case 'check_email':
+             $email = $Util->e($_POST['email']);
+             echo json_encode($Admin->find_by($email,'email',['email']) ? false : true);
+          break;
 
-            case '_create':
-               $File->validate($_FILES['image']);
-               $output   = $Util->array_except($_POST, ['action','created_at']);
-               $new_data = array_merge($output['admin'],['image'=>$_FILES['image']['name'],'created_at'=>time()]);
-               echo json_encode(($Admin->create_new_user($new_data) ?  ['success'=>true] :  ['success'=>false]));
-            break;
+          case '_create':
+             $File->validate($_FILES['image']);
+             $output   = $Util->array_except($_POST, ['action','created_at']);
+             $new_data = array_merge($output['admin'],['image'=>$_FILES['image']['name'],'created_at'=>time()]);
+             echo json_encode(($Admin->create_new_user($new_data) ?  ['success'=>true] :  ['success'=>false]));
+          break;
 
           case 'forgot_password' :
            $email  = $Util->e($_POST['email']);
            extract($Util->get_token());
-           $result = $DB->prepare("
-                       UPDATE forgot_password SET token =':token', token_expire =':token_expiration' WHERE user_id =
-                       (SELECT id FROM admins WHERE email=':email')
-            ");
-           $result->execute([
-              ':token'            =>$token,
+           $stmt = $DB->prepare('
+                       UPDATE forgot_password SET token=:token, token_expire=:token_expiration
+                       WHERE user_id = (SELECT id FROM admins WHERE email=:email)
+            ');
+           $stmt->execute([
+              ':token'            => $token,
               ':token_expiration' => $token_expiration,
               ':email'            => $email
            ]);
@@ -51,20 +51,23 @@ $DB = $database->getInstance();
           $email        = $Util->e($email);
           $token        = $Util->e($token);
           $new_password = password_hash($new_password,PASSWORD_DEFAULT);
-          $user = $DB->query("SELECT admins.id,forgot_password.token_expire FROM admins INNER JOIN forgot_password ON admins.id = forgot_password.user_id WHERE admins.email='$email'
-                                ")->fetch(PDO::FETCH_ASSOC);
-          if(count($user) > 0){
-              $id = $user['id'];
-              $date = $user['token_expire'];
-              if(time() >= $date){
-                  echo json_encode(['success'=>false,'message'=>'Please request another forgot password']);
-              }else{
-                 $stmt = $DB->query("UPDATE admins JOIN forgot_password ON forgot_password.user_id = admins.id SET admins.password = '$new_password' , forgot_password.token = 0 , forgot_password.token_expire = 0 WHERE admins.id = '$id'");
-                  if($stmt){
-                    echo json_encode(['success'=>true,'message'=>'Successfully changed your password']);
-                  }
-              }
 
+          $stmt = $DB->prepare('
+              UPDATE admins INNER JOIN forgot_password ON admins.id = forgot_password.user_id
+              SET admins.password=:new_password , forgot_password.token =:token, forgot_password.token_expire = :token_expire
+              WHERE admins.email=:email AND forgot_password.token_expire > :time
+              ');
+          $result = $stmt->execute([
+            ':new_password' => $new_password,
+            ':token'        => $token,
+            ':token_expire' => 0,
+            ':email'        => $email,
+            ':time'         => time()
+          ]);
+          if($result){
+            echo json_encode(['success'=>true,'message'=>'Successfully changed your password']);
+          }else{
+             echo json_encode(['success'=>false,'message'=>'Please do another request']);
           }
           break;
 
