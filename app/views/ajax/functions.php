@@ -26,9 +26,15 @@ $DB = $database->getInstance();
           case 'forgot_password' :
            $email  = $Util->e($_POST['email']);
            extract($Util->get_token());
-           $result = $DB->query("
-                       UPDATE forgot_password SET token = '$token', token_expire = '$token_expiration' WHERE user_id = (SELECT id FROM admins WHERE email='$email')
+           $result = $DB->prepare("
+                       UPDATE forgot_password SET token =':token', token_expire =':token_expiration' WHERE user_id =
+                       (SELECT id FROM admins WHERE email=':email')
             ");
+           $result->execute([
+              ':token'            =>$token,
+              ':token_expiration' => $token_expiration,
+              ':email'            => $email
+           ]);
             $Util->send_email(
                     [
                     'email'       =>'christophervistal24@gmail.com',
