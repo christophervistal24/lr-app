@@ -53,7 +53,7 @@ var OpAuthReminder = function() {
                                     swal("Success!",data.message, "success");
                                     $(form)[0].reset();
                                 }
-                            },
+                            }
                         });
                 return false;
                 }else if($('#reminder-credential').attr("name") == 'new_password'){
@@ -68,7 +68,7 @@ var OpAuthReminder = function() {
                                 if(data.success == true){
                                    swal({
                                       title: "Proceed to login page?",
-                                      text: "Start loggin in with your new password",
+                                      text: data.message,
                                       icon: "success",
                                       buttons: true,
                                       dangerMode: true,
@@ -94,7 +94,7 @@ var OpAuthReminder = function() {
                                       }
                                     });
                                 }
-                            },
+                            }
                         });
                 return false;
                 }

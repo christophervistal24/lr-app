@@ -13,7 +13,7 @@ class Database
 
     public function __construct()
     {
-       self::$database = new PDO('mysql:host='.self::DB_SERVER.';dbname='.self::DB_NAME.'', self::DB_USER,self::DB_PASS);
+       self::$database = new PDO('mysql:host='.self::DB_SERVER.';dbname='.self::DB_NAME.'', self::DB_USER,self::DB_PASS, array(PDO::MYSQL_ATTR_FOUND_ROWS => true));
     }
 
     public function getInstance()

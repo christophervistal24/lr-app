@@ -49,7 +49,6 @@ class Admin extends Database
       }
    }
 
-
    // Add some extra security
    public function check($username,$input_password)
    {
