@@ -15,6 +15,9 @@ class Page extends Controller
     public function login()
     {
         Controller::view('layouts/header',['title'=>' | Home']);
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $this->admin->check($_POST['username'],$_POST['password']);
+        }
         Controller::view('login',[]);
         Controller::view('layouts/footer',[]);
     }

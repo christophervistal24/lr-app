@@ -1,5 +1,5 @@
-<?php session_start(); ?>
 <?php ob_start(); ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!--[if lte IE 9]>     <html lang="en" class="no-focus lt-ie10 lt-ie10-msg"> <![endif]-->
 <!--[if gt IE 9]><!--> <html lang="en" class="no-focus"> <!--<![endif]-->
@@ -69,7 +69,7 @@
     'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
     'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
     -->
-    <?php if (!empty($_SESSION)): ?>
+    <?php if (!empty($_SESSION['id'])): ?>
     <div id="page-container" class="sidebar-o side-scroll page-header-modern main-content-boxed">
         <!-- Side Overlay-->
         <aside id="side-overlay">

@@ -49,17 +49,20 @@ class Admin extends Database
       }
    }
 
-   // Add some extra security
-   public function check($username,$input_password)
+   public function check($input_username,$input_password)
    {
-        // if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        // }
-       // $user_data = $this->find_by_username($username,'username');
-       // if(password_verify($input_password,$user_data['password'])){
-       //    $new_user_data = $this->utilities->array_except($user_data,['password','created_at','updated_at']);
-       //    $_SESSION['id'] = $new_user_data['id'];
-       //    header("Location:dashboard");
-       // }else{return;}
+      // Retrieve some data check and also check if the username is exists
+       $user_data = $this->find_by($input_username,'username',[
+        'username','password','firstname','middlename','lastname',
+        'gender','birthday','email','image','id'
+       ]);
+      if(isset($user_data['username']) && isset($input_password)){
+          if(password_verify($input_password,$user_data['password'])){
+              $_SESSION['id'] = $user_data['id'];
+              header("Location:dashboard");
+            }//else{return;}
+            return;
+      }
    }
 
    public function find_by($value,$column,$retrieve = [])

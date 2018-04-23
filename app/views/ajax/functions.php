@@ -34,16 +34,14 @@ $DB = $database->getInstance();
               ':token'            => $token,
               ':release'          => time(),
               ':token_expiration' => $token_expiration,
-              ':email'            => $email
+              ':email'            => $email,
            ]);
-           $Util->send_email(
-                    [
+           $Util->send_email([
                     'email'       =>'christophervistal24@gmail.com',
                     'fetch_email' => $email,
                     'token'       => $token,
                     'password'    => 'iwanttobecomeaprogrammer',
-                    ]
-           );
+          ]);
           break;
 
           case 'change_password':

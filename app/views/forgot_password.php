@@ -41,10 +41,6 @@
                                         <input type="hidden" id="email" name="email" value="<?php echo $_GET['email']; ?>">
                                         <input type="hidden" id="token" name="token" value="<?php echo $_GET['token']; ?>">
                                         <input type="hidden"  name="action" value="change_password">
-                            <?php else: ?>
-                            <div class="progress form-group">
-                                <div class="progress-bar" id="prog"></div>
-                            </div>
                             <?php endif ?>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-alt-primary">
