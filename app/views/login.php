@@ -24,8 +24,14 @@
                 <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
                 <form action="" method="POST">
+
                     <div class="form-group row">
                         <div class="col-12">
+                             <div class="container text-danger">
+                                <?php
+                                    echo $data['validate'];
+                                ?>
+                             </div>
                             <div class="form-material floating">
                                 <input type="text" class="form-control" id="login-username" name="username">
                                 <label for="login-username">Username</label>

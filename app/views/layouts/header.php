@@ -1,5 +1,4 @@
 <?php ob_start(); ?>
-<?php session_start(); ?>
 <!DOCTYPE html>
 <!--[if lte IE 9]>     <html lang="en" class="no-focus lt-ie10 lt-ie10-msg"> <![endif]-->
 <!--[if gt IE 9]><!--> <html lang="en" class="no-focus"> <!--<![endif]-->
@@ -414,11 +413,14 @@
                         <!-- Visible only in normal mode -->
                         <div class="sidebar-mini-hidden-b text-center">
                             <a class="img-link" href="be_pages_generic_profile.html">
-                                <img class="img-avatar" src="assets/img/avatars/avatar15.jpg" alt="">
+                                <img class="img-avatar" src="<?=  '../../public/assets/uploads/' . $data['user_info']['image']; ?>" alt="">
                             </a>
                             <ul class="list-inline mt-10">
                                 <li class="list-inline-item">
-                                    <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="be_pages_generic_profile.html">J. Smith</a>
+                                    <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="profile"><?=
+                                    substr($data['user_info']['firstname'],0,1) . ' . ' .
+                                    $data['user_info']['lastname']
+                                    ?></a>
                                 </li>
                                 <li class="list-inline-item">
                                     <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
@@ -553,8 +555,12 @@
                 <div class="content-header-section">
                     <!-- User Dropdown -->
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        J. Smith<i class="fa fa-angle-down ml-5"></i>
+                        <button type="button" class="text-capitalize btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?=
+                                    $data['user_info']['lastname'] . ' , ' .
+                                    $data['user_info']['firstname']
+                            ?>
+                        <i class="fa fa-angle-down ml-5"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right min-width-150" aria-labelledby="page-header-user-dropdown">
                             <a class="dropdown-item" href="be_pages_generic_profile.html">

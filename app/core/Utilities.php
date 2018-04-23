@@ -4,6 +4,13 @@
 class Utilities extends Violin\Violin
 {
 
+  private $db;
+
+    public function inject(PDO $db)
+    {
+      $this->db = $db;
+    }
+
     // Check if the request is POST
     public function is_post()
     {
@@ -86,6 +93,42 @@ class Utilities extends Violin\Violin
           echo json_encode(['success'=>true,'message'=>'Please check your email']);
         }
    }
+
+   protected function validate_isGender($value,$input,$args)
+   {
+        return in_array($value,$args);
+   }
+
+   protected function validate_isImage($value,$input,$args)
+   {
+      return in_array($value,$args);
+   }
+
+   protected function validate_uniqueUsername($value,$input,$args)
+   {
+      $user = $this->db->prepare("
+          SELECT count(*) as is_unique FROM admins WHERE username = :username
+      ");
+      $result = $user->execute(['username'=>$value]);
+      if($user->fetchObject()->is_unique){
+          return false;
+      }
+      return true;
+   }
+
+   protected function validate_uniqueEmail($value,$input,$args)
+   {
+      $user_email = $this->db->prepare("
+          SELECT count(*) as is_unique FROM admins WHERE email = :email
+      ");
+      $result = $user_email->execute(['email'=>$value]);
+      if($user_email->fetchObject()->is_unique){
+          return false;
+      }
+      return true;
+   }
+
+
 
 }
 ?>

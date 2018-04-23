@@ -75,6 +75,12 @@ class Database
         }
     }
 
+    // Prepare statement
+    public function prepare()
+    {
+
+    }
+
 }
 
 ?>

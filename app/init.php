@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 define('LR_APP',dirname(__DIR__));
 
 require_once 'core/App.php';

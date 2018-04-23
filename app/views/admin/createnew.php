@@ -3,19 +3,30 @@
 <div class="block">
     <div class="block-header block-header-default">
         <h3 class="block-title">Create new admin</h3>
-        <div class="block-options">
+               <div class="block-options">
             <button type="button" class="btn-block-option">
             <i class="si si-wrench"></i>
             </button>
         </div>
     </div>
 
+        <?php if (isset($data['validate'])): ?>
+
+                <?php foreach ($data['validate'] as $value): ?>
+                     <div class="alert alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <span><?=$value?>&emsp;</span>
+                    <br>
+                    </div>
+                <?php endforeach ?>
+        <?php endif ?>
+
+
     <div class="block-content">
         <div class="row justify-content-center py-20">
             <div class="col-xl-6">
                 <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                <!-- createAccount -->
                 <form id="createAccount" action="" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label class="col-lg-4 col-form-label" for="val-username">Username <span class="text-danger">*</span></label>
@@ -23,7 +34,6 @@
                     </div>
                     <div class="form-group row"><label class="col-lg-4 col-form-label" for="val-email">Email <span class="text-danger">*</span></label>
                     <div class="col-lg-8"><input type="text" class="form-control" id="val-email" name="admin[email]" placeholder="Your valid email..">
-                <?php echo "";?>
                 </div>
             </div>
             <div class="form-group row"><label class="col-lg-4 col-form-label" for="val-password">Password <span class="text-danger">*</span></label>
@@ -52,7 +62,6 @@
         <div class="form-group row">
             <label class="col-lg-4 col-form-label" for="val-skill">Gender <span class="text-danger">*</span></label>
             <div class="col-lg-8"><select class="form-control" id="val-skill" name="admin[gender]">
-                <option value="" disabled selected>Please select</option>
                 <option value="female">Female</option>
                 <option value="male">Male</option>
             </select></div>

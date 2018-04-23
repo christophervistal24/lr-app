@@ -58,20 +58,48 @@ class Admin extends Database
           if(isset($user_data['username']) && isset($input_password)){
              //validate the password input
               if(!$this->is_password_correct($input_password,$user_data['password'])){
-                //error message here
+                return 'Please check your username or password';
               }else{
                 $_SESSION['id'] = $user_data['id'];
                 header("Location:dashboard");
               }
           }else{
-            //error message here
+                return 'Please check your username or password';
           }
+      }
+   }
+
+   public function validate($fields = [])
+   {
+      $fields = $this->Utilities->array_except($fields,['action']);
+      if($this->Utilities->is_post() && is_array($fields)){
+          $this->Utilities->inject(self::$database);
+          extract($fields['admin']);
+          extract($fields['image']);
+          $this->Utilities->addRuleMessage('isGender','The {field} must be female or male.');
+          $this->Utilities->addRuleMessage('isImage','The {field} must jpeg , jpg , png or gif.');
+          $this->Utilities->addRuleMessage('uniqueUsername','{value} is already exists');
+          $this->Utilities->addRuleMessage('uniqueEmail','{value} is already exists');
+          $this->Utilities->validate([
+            'username|Username'                      => [$username,'required|uniqueUsername|min(3)|max(20)'],
+            'email|Email'                            => [$email,'required|email|uniqueEmail'],
+            'password|Password'                      => [$password,'required'],
+            'confirm_password|Password confirmation' => [$confirm_password,'required|matches(password)'],
+            'firstname|Firstname'                    => [$firstname,'required'],
+            'middlename|Middlename'                  => [$middlename,'required'],
+            'lastname|Lastname'                      => [$lastname,'required'],
+            'birthday|Birthday'                      => [$birthday,'required'],
+            'gender|Gender'                          => [$gender,'required|isGender(male,female)'],
+            'type|Image'                      => [$type,'required|isImage(image/png,image/jpg,image/jpeg,image/gif)'],
+          ]);
+
+          return $this->Utilities->errors()->all();
       }
    }
 
    public function find_by($value,$column,$retrieve = [])
    {
-      return parent::get_values($value,$column,$retrieve);
+          return parent::get_values($value,$column,$retrieve);
    }
 
    public function is_password_correct($input_p,$fetch_password)

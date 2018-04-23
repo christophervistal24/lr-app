@@ -74,8 +74,9 @@ $(document).ready(function(){
                 'admin[gender]':{
                     required:true,
                 },
-                 'admin[image]':{
+                 'image':{
                     required:true,
+                    accept: "image/jpg,image/jpeg,image/png,image/gif"
                 }
             },
             messages: {
@@ -115,8 +116,9 @@ $(document).ready(function(){
                 'admin[gender]':{
                     required:'Please select gender',
                 },
-                 'admin[image]':{
+                 'image':{
                     required:'Please upload some image',
+                    accept: 'Image must be JPEG , JPG , PNG or GIF'
                 }
              },
               submitHandler: function(form){
