@@ -48,8 +48,8 @@
                   <label class="col-lg-4 col-form-label" for="val-skill">Gender *</label>
                   <div class="col-lg-8">
                      <select class="form-control" id="val-skill" name="gender">
-                                    <option value="female" <?php echo ($gender =='Female') ? 'selected' : null ; ?>>Female</option>
-                                    <option value="male" <?php echo ($gender =='Male') ? 'selected' : null ; ?>>Male</option>
+                                    <option value="female" <?= ($gender =='Female') ? 'selected' : null ; ?>>Female</option>
+                                    <option value="male"   <?= ($gender =='Male') ? 'selected' : null ; ?>>Male</option>
                      </select>
                   </div>
                </div>
