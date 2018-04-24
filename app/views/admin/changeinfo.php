@@ -3,7 +3,7 @@
    <!-- Chat Header -->
    <div class="js-chat-head block-content block-content-full block-sticky-options bg-gd-sea text-center c1">
       <img class="img-avatar img-avatar-thumb" src="../../public/assets/uploads/<?= $image ?>" alt="">
-      <div class="font-w600 mt-15 mb-5 text-white text-capitalize"><?=$firstname . ' ' . substr($middlename,0,1) . '. ' . $lastname?></div>
+      <div class="font-w600 mt-15 mb-5 text-white text-capitalize" id="profile_name"><?=$firstname . ' ' . substr($middlename,0,1) . '. ' . $lastname?></div>
    </div>
    <!-- END Chat Header -->
 </div>

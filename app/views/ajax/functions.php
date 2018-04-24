@@ -121,8 +121,11 @@ $DB = $database->getInstance();
                ]);
                if($result){
                 echo json_encode([
-                  'success'=>true,
-                  'message'=>'Successfully changed your personal information',
+                  'success'    => true,
+                  'message'    => 'Successfully changed your personal information',
+                  'firstname'  => $firstname,
+                  'middlename' => $middlename,
+                  'lastname'   => $lastname,
                   ]);
                }
            }else{

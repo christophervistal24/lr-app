@@ -112,6 +112,10 @@ $(document).ready(function(){
                         if(data.success == true){
                             swal("Success!", data.message, "success");
                             $('#val_password').val('');
+                            $('#side_overlay_name').html(data.firstname + ' ' + data.lastname);
+                            $('#top_right_name').html(data.lastname + ' , ' + data.firstname);
+                            $('#sidebar_name').html(data.firstname + ' ' + data.middlename.substr(0,1) + '. ' + data.lastname);
+                            $('#profile_name').html(data.firstname + ' ' + data.middlename.substr(0,1) + '. ' + data.lastname);
                         }else{
                             swal("Error!", data.message, "error");
                         }

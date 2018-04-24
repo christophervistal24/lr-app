@@ -89,7 +89,7 @@
                             <a class="img-link mr-5" href="profile">
                                 <img class="img-avatar img-avatar32" src="../../public/assets/img/avatars/avatar15.jpg" alt="">
                             </a>
-                            <a class="align-middle link-effect text-capitalize text-primary-dark font-w600" href="profile"><?= $data['user_info']['firstname'] . ' ' . $data['user_info']['lastname']  ?></a>
+                            <a id="side_overlay_name" class="align-middle link-effect text-capitalize text-primary-dark font-w600" href="profile"><?= $data['user_info']['firstname'] . ' ' . $data['user_info']['lastname']  ?></a>
                         </div>
                         <!-- END User Info -->
                     </div>
@@ -418,7 +418,7 @@
                             </a>
                             <ul class="list-inline mt-10">
                                 <li class="list-inline-item">
-                                    <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="profile"><?=
+                                    <a id="sidebar_name" class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="profile"><?=
                                     $data['user_info']['firstname'] . ' ' .
                                     substr($data['user_info']['middlename'],0,1) . ' . ' .
                                     $data['user_info']['lastname']
@@ -559,7 +559,7 @@
                 <div class="content-header-section">
                     <!-- User Dropdown -->
                     <div class="btn-group" role="group">
-                        <button type="button" class="text-capitalize btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button id="top_right_name" type="button" class="text-capitalize btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?=
                                     $data['user_info']['lastname'] . ' , ' .
                                     $data['user_info']['firstname']
