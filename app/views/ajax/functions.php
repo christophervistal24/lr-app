@@ -16,6 +16,18 @@ $DB = $database->getInstance();
              echo json_encode($Admin->find_by($email,'email',['email']) ? false : true);
           break;
 
+          case 'check_password':
+            $data = $Util->array_except($_POST,'action');
+            extract($data);
+            $password = $Util->e($password);
+            if(isset($_SESSION['id'])){
+              //do some validation and check the password create some method
+              $user_data = $Admin->find_by($_SESSION['id'],'id',['password']);
+              //return if the password is correct or wrong
+              echo json_encode(($Admin->is_password_correct($password,$user_data['password'])));
+            }
+          break;
+
           case '_create':
              $File->validate($_FILES['image']);
              $output   = $Util->array_except($_POST, ['action','created_at']);

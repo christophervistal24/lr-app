@@ -39,12 +39,20 @@ $(document).ready(function(){
                 },
                 'password': {
                     required: true,
-                    minlength: 8
-                },
-                'confirm_password': {
-                    required: true,
-                    equalTo: '#val-password',
-                    minlength :8
+                    minlength: 8,
+                    remote:{
+                        url:"/../../lr-app/app/views/ajax/functions.php",
+                        type:"POST",
+                        dataType :"json",
+                        data: {
+                            password: function(){
+                                return $("#val_password").val();
+                            },
+                            action: function(){
+                                return 'check_password';
+                            }
+                        },
+                    }
                 },
                 'firstname': {
                     required: true,
@@ -66,23 +74,14 @@ $(document).ready(function(){
                 },
             },
             messages: {
-                'username': {
-                    required: 'Please enter a username',
-                    minlength:"Username must be minimum of {0} characters",
-                    remote:$.validator.format("{0} is already exists")
-                },
                 'email':{
                  required: 'Please enter a valid email address',
                  remote:$.validator.format("{0} is already exists")
                 },
                 'password': {
-                    required: 'Please provide a password',
-                    minlength: 'Your password must be at least 8 characters long'
-                },
-                'confirm_password': {
-                    required: 'Please provide a password',
-                    minlength: 'Your password must be at least 8 characters long',
-                    equalTo: 'Please enter the same password as above'
+                 required: 'Please provide a password',
+                 minlength: 'Your password must be at least 8 characters long',
+                 remote:$.validator.format("Please check your password"),
                 },
                 'firstname':{
                     required: 'Please enter firstname',

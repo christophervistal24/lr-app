@@ -55,7 +55,7 @@
                </div>
                <div class="form-group row">
                   <label class="col-lg-4 col-form-label" for="val-password">Password *</label>
-                  <div class="col-lg-8"><input type="password" class="form-control" id="val-password" name="password" placeholder=""></div>
+                  <div class="col-lg-8"><input type="password" class="form-control" id="val_password" name="password" placeholder=""></div>
                </div>
                <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary float-right">Submit</button></div>
             </form>

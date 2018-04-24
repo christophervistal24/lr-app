@@ -85,10 +85,10 @@
                         <!-- END Close Side Overlay -->
                         <!-- User Info -->
                         <div class="content-header-item">
-                            <a class="img-link mr-5" href="be_pages_generic_profile.html">
+                            <a class="img-link mr-5" href="profile">
                                 <img class="img-avatar img-avatar32" src="../../public/assets/img/avatars/avatar15.jpg" alt="">
                             </a>
-                            <a class="align-middle link-effect text-primary-dark font-w600" href="be_pages_generic_profile.html">John Smith</a>
+                            <a class="align-middle link-effect text-capitalize text-primary-dark font-w600" href="profile"><?= $data['user_info']['firstname'] . ' ' . $data['user_info']['lastname']  ?></a>
                         </div>
                         <!-- END User Info -->
                     </div>
@@ -412,7 +412,7 @@
                         <!-- END Visible only in mini mode -->
                         <!-- Visible only in normal mode -->
                         <div class="sidebar-mini-hidden-b text-center">
-                            <a class="img-link" href="be_pages_generic_profile.html">
+                            <a class="img-link" href="profile">
                                 <img class="img-avatar" src="<?=  '../../public/assets/uploads/' . $data['user_info']['image']; ?>" alt="">
                             </a>
                             <ul class="list-inline mt-10">
@@ -443,10 +443,12 @@
                     <div class="content-side content-side-full">
                         <ul class="nav-main">
                             <li>
+                                <a href="dashboard"><i class="si si-user"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                                <a href="profile"><i class="si si-user"></i><span class="sidebar-mini-hide">Profile</span></a>
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-cup"></i><span class="sidebar-mini-hide">Account Settings</span></a>
                                 <ul>
                                     <li>
-                                        <a href="changeinfo">Accout Information</a>
+                                        <a href="changeinfo">Personal Information</a>
                                     </li>
                                     <li>
                                         <a href="createnew">Create new admin</a>
@@ -564,25 +566,18 @@
                         <i class="fa fa-angle-down ml-5"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right min-width-150" aria-labelledby="page-header-user-dropdown">
-                            <a class="dropdown-item" href="be_pages_generic_profile.html">
+                            <a class="dropdown-item" href="profile">
                                 <i class="si si-user mr-5"></i> Profile
                             </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
+                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="#inbox">
                                 <span><i class="si si-envelope-open mr-5"></i> Inbox</span>
                                 <span class="badge badge-primary">3</span>
-                            </a>
-                            <a class="dropdown-item" href="be_pages_generic_invoice.html">
-                                <i class="si si-note mr-5"></i> Invoices
                             </a>
                             <div class="dropdown-divider"></div>
                             <!-- Toggle Side Overlay -->
                             <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
-                            <a class="dropdown-item" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
-                                <i class="si si-wrench mr-5"></i> Settings
-                            </a>
-                            <!-- END Side Overlay -->
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="op_auth_signin.html">
+                            <a class="dropdown-item" href="logout">
                                 <i class="si si-logout mr-5"></i> Sign Out
                             </a>
                         </div>

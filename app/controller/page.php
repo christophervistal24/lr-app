@@ -12,6 +12,7 @@ class Page extends Controller
                             ['username','firstname','middlename','lastname','gender','birthday','email','image']);
     }
 
+
     public function login()
     {
         Controller::view('layouts/header',['title'=>' | Home']);
@@ -71,6 +72,19 @@ class Page extends Controller
         ]);
         Controller::view('layouts/footer',[]);
     }
+
+    public function profile()
+    {
+        Controller::view('layouts/header',[
+            'title'=>' | Profile',
+            'user_info' => $this->info,
+        ]);
+        Controller::view('admin/profile',[
+            'user_info' => $this->info,
+        ]);
+        Controller::view('layouts/footer',[]);
+    }
+
 
     public function logout()
     {
