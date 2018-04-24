@@ -25,6 +25,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../../public/assets/js/custom.js"></script>
 <script src="../../public/assets/js/forgot.js"></script>
+<script src="../../public/assets/js/changeinfo.js"></script>
 <!-- Page JS Code -->
 <script>
 jQuery(function () {

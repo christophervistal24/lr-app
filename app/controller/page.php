@@ -9,11 +9,7 @@ class Page extends Controller
     {
         $this->admin     = $this->model('Admin');
         $this->info      = $this->admin->find_by(@$_SESSION['id'],'id',
-                            [
-                             'username','firstname','middlename','lastname',
-                            'gender','birthday','email','image'
-                            ]
-                           );
+                            ['username','firstname','middlename','lastname','gender','birthday','email','image']);
     }
 
     public function login()

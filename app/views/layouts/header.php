@@ -418,7 +418,8 @@
                             <ul class="list-inline mt-10">
                                 <li class="list-inline-item">
                                     <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="profile"><?=
-                                    substr($data['user_info']['firstname'],0,1) . ' . ' .
+                                    $data['user_info']['firstname'] . ' ' .
+                                    substr($data['user_info']['middlename'],0,1) . ' . ' .
                                     $data['user_info']['lastname']
                                     ?></a>
                                 </li>
