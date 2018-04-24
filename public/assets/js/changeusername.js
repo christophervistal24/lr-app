@@ -1,6 +1,5 @@
-/*jshint esversion:6*/
 $(document).ready(function(){
-    $('#changePassword').validate({
+    $('#changeUsername').validate({
             errorClass: 'invalid-feedback animated fadeInDown',
             errorElement: 'div',
             errorPlacement: function(error, e) {
@@ -14,7 +13,24 @@ $(document).ready(function(){
                 jQuery(e).remove();
             },
         rules: {
-                'change_current_password': {
+                'username': {
+                    required: true,
+                    minlength: 5,
+                    remote:{
+                        url:"/../../lr-app/app/views/ajax/functions.php",
+                        type:"POST",
+                        dataType :"json",
+                        data: {
+                            username: function(){
+                                return $("#username").val();
+                            },
+                            action: function(){
+                                return 'check_username';
+                            }
+                        },
+                    }
+                },
+                'username_password':{
                     required: true,
                     minlength: 8,
                      remote:{
@@ -23,7 +39,7 @@ $(document).ready(function(){
                         dataType :"json",
                         data: {
                             password: function(){
-                                return $("#change_current_password").val();
+                                return $("#password").val();
                             },
                             action: function(){
                                 return 'check_password';
@@ -31,50 +47,21 @@ $(document).ready(function(){
                         },
                     }
                 },
-                'change_new_password':{
-                    required : true,
-                    minlength : 8,
-                     remote:{
-                        url:"/../../lr-app/app/views/ajax/functions.php",
-                        type:"POST",
-                        dataType :"json",
-                        data: {
-                            password: function(){
-                                return $("#change_new_password").val();
-                            },
-                            action: function(){
-                                return 'change_check_password';
-                            }
-                        },
-                    }
-                },
-                'change_new_confirm_password':{
-                    required : true,
-                    minlength : 8,
-                    equalTo: '#change_new_password',
-                },
             },
             messages: {
-                'change_current_password':{
-                 required: 'Please enter your current password',
-                 remote:$.validator.format("Please check your password")
+                'username': {
+                    required: 'Please enter a username',
+                    minlength:"Username must be minimum of {0} characters",
+                    remote:$.validator.format("{0} is already exists")
                 },
-
-                'change_new_password': {
-                 required: 'Please enter your new password',
-                 minlength: 'Your password must be at least 8 characters long',
-                 remote:$.validator.format("Please don't type your current password"),
+                'username_password':{
+                 required: 'Please provide your current password',
+                 remote:$.validator.format("Check your password")
                 },
-
-                'change_new_confirm_password':{
-                    required: 'Re-type password is required',
-                    minlength: 'Your password must be at least 8 characters long',
-                    equalTo : 'Re-type password must be matched at new password',
-                }
 
              },
               submitHandler: function(form){
-                 $.ajax({
+                $.ajax({
                     url:'/../../lr-app/app/views/ajax/functions.php',
                     type:"POST",
                     dataType:"json",
@@ -83,8 +70,6 @@ $(document).ready(function(){
                         if(data.success == true){
                             swal("Success!", data.message, "success");
                             $(form)[0].reset();
-                        }else{
-                            swal("Error!","Something wrong please check your information or email us", "error");
                         }
                     },
                 });

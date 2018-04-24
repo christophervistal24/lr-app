@@ -116,7 +116,8 @@ $DB = $database->getInstance();
                   'lastname'   => $Util->e($lastname),
                   'birthday'   => $Util->e($birthday),
                   'gender'     => $Util->e($gender),
-                  'WHERE id'   => $Util->e($user_data['id']),
+                  'updated_at' => time(),
+                  'WHERE id'   => $Util->e($_SESSION['id']),
                ]);
                if($result){
                 echo json_encode([
@@ -132,17 +133,40 @@ $DB = $database->getInstance();
            case '_password_change':
             $data = $Util->array_except($_POST,'action');
             extract($data);
-            $user_data = $Admin->find_by($_SESSION['id'],'id',['password']);
+            $user_data = $Admin->find_by($_SESSION['id'],'id',['password','id']);
             if ($Admin->is_password_correct($change_current_password,$user_data['password'])) {
               //update password
               $result = $Admin->update_record([
                 'password' => password_hash($change_new_password,PASSWORD_DEFAULT),
+                'updated_at' => time(),
+                'WHERE id' => $user_data['id'],
               ]);
 
               if ($result) {
                   echo json_encode([
                   'success'=>true,
                   'message'=>'Successfully changed your password',
+                  ]);
+              }
+            }
+           break;
+
+           case '_username_change':
+             $data = $Util->array_except($_POST,'action');
+            extract($data);
+            $user_data = $Admin->find_by($_SESSION['id'],'id',['password','id']);
+            if ($Admin->is_password_correct($username_password,$user_data['password']) && isset($username)) {
+              //update password
+              $result = $Admin->update_record([
+                'username'   => $username,
+                'updated_at' => time(),
+                'WHERE id'   => $user_data['id'],
+              ]);
+
+              if ($result) {
+                  echo json_encode([
+                  'success'=>true,
+                  'message'=>'Successfully changed your username',
                   ]);
               }
             }

@@ -28,6 +28,7 @@
     </style>
     <!-- Stylesheets -->
     <!-- Codebase framework -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../../public/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
     <link rel="stylesheet" href="../../public/assets/js/plugins/select2/select2.min.css">

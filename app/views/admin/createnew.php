@@ -10,8 +10,8 @@
         </div>
     </div>
 
+        <!-- If someone tries to disabled javascript to bypass validation -->
         <?php if (isset($data['validate'])): ?>
-
                 <?php foreach ($data['validate'] as $value): ?>
                      <div class="alert alert-danger" role="alert">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>

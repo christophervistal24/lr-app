@@ -68,7 +68,7 @@
       <!-- Single Chat #3 -->
       <div class="block block-rounded block-themed">
          <!-- Chat Header -->
-         <div class="js-chat-head block-content block-content-full block-sticky-options bg-gd-dusk text-center font-w600 mt-15 mb-5 text-white">Change Password<br>
+         <div class="js-chat-head block-content block-content-full block-sticky-options bg-gd-dusk text-center font-w600 mt-15 mb-5 text-white">Change Password & Username<br>
             <small class="text-white">( Don't type your current password to new password field )</small>
          </div>
          <!-- END Chat Header -->
@@ -80,7 +80,7 @@
                   <div class="col-lg-8"><input type="password" class="form-control" id="change_new_password" name="change_new_password" placeholder="Choose a safe one.."></div>
                </div>
                <div class="form-group row">
-                  <label class="col-lg-4 col-form-label" for="change_new_confirm_password">Re-type New Password<span class="text-danger">*</span></label>
+                  <label class="col-lg-4 col-form-label" for="change_new_confirm_password">Re-type New Password<span class="text-danger"> *</span></label>
                   <div class="col-lg-8"><input type="password" class="form-control" id="change_new_confirm_password" name="change_new_confirm_password" placeholder="..and confirm it!"></div>
                </div>
                <div class="form-group row">
@@ -88,6 +88,21 @@
                   <div class="col-lg-8"><input type="password" class="form-control" id="change_current_password" name="change_current_password" placeholder="Your current password"></div>
                </div>
                <input type="hidden" value="_password_change" name="action">
+               <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary float-right">Change password</button></div>
+            </form>
+         </div>
+         <hr>
+          <div class="js-chat-talk block-content block-content-full text-wrap-break-word overflow-y-auto" data-chat-id="3">
+            <form id="changeUsername" action="" method="post">
+               <div class="form-group row">
+                  <label class="col-lg-4 col-form-label" for="username">New Username<span class="text-danger"> *</span></label>
+                  <div class="col-lg-8"><input type="text" class="form-control" id="username" name="username" placeholder="Your new username"></div>
+               </div>
+               <div class="form-group row">
+                  <label class="col-lg-4 col-form-label" for="password">Current Password <span class="text-danger">*</span></label>
+                  <div class="col-lg-8"><input type="password" class="form-control" id="password" name="username_password" placeholder="Password is need"></div>
+               </div>
+               <input type="hidden" value="_username_change" name="action">
                <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary float-right">Submit</button></div>
             </form>
          </div>
