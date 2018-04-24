@@ -22,9 +22,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../../public/assets/img/favicons/apple-touch-icon-180x180.png">
     <!-- END Icons -->
     <style type="text/css">
-        body{
-            overflow-x: hidden;
-        }
+    body{
+    overflow-x: hidden;
+    }
+    #DataTables_Table_0_filter{
+        float :right;
+    }
     </style>
     <!-- Stylesheets -->
     <!-- Codebase framework -->
@@ -70,6 +73,8 @@
     'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
     -->
     <?php if (!empty($_SESSION['id'])): ?>
+    <!-- Pop Out Modal -->
+    <!-- end of pop out modal -->
     <div id="page-container" class="sidebar-o side-scroll page-header-modern main-content-boxed">
         <!-- Side Overlay-->
         <aside id="side-overlay">
@@ -419,9 +424,9 @@
                             <ul class="list-inline mt-10">
                                 <li class="list-inline-item">
                                     <a id="sidebar_name" class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="profile"><?=
-                                    $data['user_info']['firstname'] . ' ' .
-                                    substr($data['user_info']['middlename'],0,1) . ' . ' .
-                                    $data['user_info']['lastname']
+                                        $data['user_info']['firstname'] . ' ' .
+                                        substr($data['user_info']['middlename'],0,1) . '. ' .
+                                        $data['user_info']['lastname']
                                     ?></a>
                                 </li>
                                 <li class="list-inline-item">
@@ -443,9 +448,19 @@
                     <!-- Side Navigation -->
                     <div class="content-side content-side-full">
                         <ul class="nav-main">
+                            <a href="dashboard"><i class="si si-user"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                            <a href="profile"><i class="si si-user"></i><span class="sidebar-mini-hide">Profile</span></a>
+                            <li> <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-cup"></i><span class="sidebar-mini-hide">Import & Export</span></a>
+                                <ul>
+                                    <li>
+                                        <a href="#modal-popin"  data-toggle="modal">Import CSV</a>
+                                    </li>
+                                    <li>
+                                        <a href="#modal-popin2" data-toggle="modal">Export CSV</a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li>
-                                <a href="dashboard"><i class="si si-user"></i><span class="sidebar-mini-hide">Dashboard</span></a>
-                                <a href="profile"><i class="si si-user"></i><span class="sidebar-mini-hide">Profile</span></a>
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-cup"></i><span class="sidebar-mini-hide">Account Settings</span></a>
                                 <ul>
                                     <li>
@@ -507,8 +522,9 @@
                     <!-- Color Themes (used just for demonstration) -->
                     <!-- Themes functionality initialized in Codebase() -> uiHandleTheme() -->
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-circle btn-dual-secondary" id="page-header-themes-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-paint-brush"></i>
+                        <!-- change with import -->
+                        <button type="button" class="btn btn-circle btn-dual-secondary">
+                        <i class="fa fa-file-excel-o"></i>
                         </button>
                         <div class="dropdown-menu min-width-150" aria-labelledby="page-header-themes-dropdown">
                             <h6 class="dropdown-header text-center">Color Themes</h6>
@@ -560,10 +576,10 @@
                     <!-- User Dropdown -->
                     <div class="btn-group" role="group">
                         <button id="top_right_name" type="button" class="text-capitalize btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?=
-                                    $data['user_info']['lastname'] . ' , ' .
-                                    $data['user_info']['firstname']
-                            ?>
+                        <?=
+                        $data['user_info']['lastname'] . ' , ' .
+                        $data['user_info']['firstname']
+                        ?>
                         <i class="fa fa-angle-down ml-5"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right min-width-150" aria-labelledby="page-header-user-dropdown">
@@ -634,4 +650,4 @@
         <main id="main-container">
             <!-- Page Content -->
             <div class="content">
-<?php endif ?>
+                <?php endif ?>

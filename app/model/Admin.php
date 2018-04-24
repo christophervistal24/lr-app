@@ -112,5 +112,24 @@ class Admin extends Database
       return parent::update_record($data);
    }
 
+   public function import_csv($csv_data = [])
+   {
+      $all_rows = [];
+      if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES)){
+            $filename = $_FILES['import']['tmp_name'];
+            if($_FILES['import']['size'] > 0){
+                $file = fopen($filename,"r");
+                $header =  [
+                    'id','firstname','lastname','address','email','gender','student_id'
+                ];
+                while(($row = fgetcsv($file,1000,",")) !== false){
+                    $all_rows[] = array_combine($header,$row);
+                }
+                fclose($file);
+            }
+        }
+        return $all_rows;
+   }
+
 
 }

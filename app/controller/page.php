@@ -45,6 +45,7 @@ class Page extends Controller
          'user_info' => $this->info,
         ]);
         Controller::view('admin/dashboard',[
+            'csv' => $this->admin->import_csv($_FILES),
         ]);
         Controller::view('layouts/footer',[]);
     }
