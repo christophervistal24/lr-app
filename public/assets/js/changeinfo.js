@@ -103,7 +103,20 @@ $(document).ready(function(){
                 },
              },
               submitHandler: function(form){
-                alert('Submit triggered');
+                 $.ajax({
+                    url:'/../../lr-app/app/views/ajax/functions.php',
+                    type:"POST",
+                    dataType:"json",
+                    data:$(form).serialize(),
+                    success:function(data){
+                        if(data.success == true){
+                            swal("Success!", data.message, "success");
+                            $('#val_password').val('');
+                        }else{
+                            swal("Error!", data.message, "error");
+                        }
+                    },
+                });
                 return false;
             }
 

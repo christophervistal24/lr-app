@@ -68,7 +68,7 @@ class Database
             $i++;
         }
         try {
-              $result =  self::$database->query('UPDATE admins SET '. $cols . ' ');
+              $result =  self::$database->query('UPDATE ' . static::$table_name . ' SET '. $cols . ' ');
               return (bool) $result;
         } catch (Exception $e) {
           die($e->getMessage());

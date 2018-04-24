@@ -107,5 +107,10 @@ class Admin extends Database
        return password_verify($input_p,$fetch_password);
    }
 
+   public static function update_record($data = [])
+   {
+      return parent::update_record($data);
+   }
+
 
 }

@@ -28,6 +28,20 @@ $DB = $database->getInstance();
             }
           break;
 
+          case 'change_check_password':
+          $input_new_password = $Util->e($_POST['change_new_password']);
+           if(isset($_SESSION['id'])){
+              //do some validation and check the password create some method
+              $user_data = $Admin->find_by($_SESSION['id'],'id',['password']);
+              //return if the password is correct or wrong
+              if( !$Admin->is_password_correct($input_new_password,$user_data['password']) ){
+                echo json_encode(true);
+              }else{
+                echo json_encode(false);
+              }
+            }
+          break;
+
           case '_create':
              $File->validate($_FILES['image']);
              $output   = $Util->array_except($_POST, ['action','created_at']);
@@ -84,6 +98,55 @@ $DB = $database->getInstance();
              echo json_encode(['success'=>false,'message'=>'Please do another request']);
           }
           break;
+
+          case '_info' :
+           $input_data = $Util->array_except($_POST,'action');
+           extract($input_data);
+           $user_data = $Admin->find_by($_SESSION['id'],'id',['password','email']);
+           if(isset($email)){
+            $user_email = $email;
+           }else{
+            $user_email = $user_data['email'];
+           }
+           if (isset($_SESSION['id']) && $Admin->is_password_correct($password,$user_data['password'])) {
+               $result = $Admin->update_record([
+                  'firstname'  => $Util->e($firstname),
+                  'middlename' => $Util->e($middlename),
+                  'email'      => $Util->e($user_email),
+                  'lastname'   => $Util->e($lastname),
+                  'birthday'   => $Util->e($birthday),
+                  'gender'     => $Util->e($gender),
+                  'WHERE id'   => $Util->e($user_data['id']),
+               ]);
+               if($result){
+                echo json_encode([
+                  'success'=>true,
+                  'message'=>'Successfully changed your personal information',
+                  ]);
+               }
+           }else{
+                echo json_encode(['success'=>false,'message'=>'Something wrong please check your information']);
+           }
+           break;
+
+           case '_password_change':
+            $data = $Util->array_except($_POST,'action');
+            extract($data);
+            $user_data = $Admin->find_by($_SESSION['id'],'id',['password']);
+            if ($Admin->is_password_correct($change_current_password,$user_data['password'])) {
+              //update password
+              $result = $Admin->update_record([
+                'password' => password_hash($change_new_password,PASSWORD_DEFAULT),
+              ]);
+
+              if ($result) {
+                  echo json_encode([
+                  'success'=>true,
+                  'message'=>'Successfully changed your password',
+                  ]);
+              }
+            }
+           break;
 
         }
     }

@@ -26,6 +26,7 @@
 <script src="../../public/assets/js/custom.js"></script>
 <script src="../../public/assets/js/forgot.js"></script>
 <script src="../../public/assets/js/changeinfo.js"></script>
+<script src="../../public/assets/js/changepassword.js"></script>
 <!-- Page JS Code -->
 <script>
 jQuery(function () {

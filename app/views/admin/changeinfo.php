@@ -57,6 +57,7 @@
                   <label class="col-lg-4 col-form-label" for="val-password">Password *</label>
                   <div class="col-lg-8"><input type="password" class="form-control" id="val_password" name="password" placeholder=""></div>
                </div>
+               <input type="hidden" value="_info" name="action">
                <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary float-right">Submit</button></div>
             </form>
          </div>
@@ -73,28 +74,20 @@
          <!-- END Chat Header -->
          <!-- Messages (demonstration messages are added with JS code at the bottom of this page) -->
          <div class="js-chat-talk block-content block-content-full text-wrap-break-word overflow-y-auto" data-chat-id="3">
-            <form class="js-validation-bootstrap2" action="" method="post">
-               <!--  <div class="form-group row">
-                  <label class="col-lg-4 col-form-label" for="val-skill">Image</label>
-                  <div class="col-8">
-                  <label class="custom-file">
-                  <input type="file" class="custom-file-input" id="example-file-input-custom" name="example-file-input-custom">
-                  <span class="custom-file-control ">Browse</span>
-                  </label>
-                  </div>
-                  </div> -->
+            <form id="changePassword" action="" method="post">
                <div class="form-group row">
-                  <label class="col-lg-4 col-form-label" for="val-password">New Password <span class="text-danger">*</span></label>
-                  <div class="col-lg-8"><input type="password" class="form-control" id="val-password" name="val-password" placeholder="Choose a safe one.."></div>
+                  <label class="col-lg-4 col-form-label" for="change_new_password">New Password <span class="text-danger">*</span></label>
+                  <div class="col-lg-8"><input type="password" class="form-control" id="change_new_password" name="change_new_password" placeholder="Choose a safe one.."></div>
                </div>
                <div class="form-group row">
-                  <label class="col-lg-4 col-form-label" for="val-confirm-password">Retype New Password <span class="text-danger">*</span></label>
-                  <div class="col-lg-8"><input type="password" class="form-control" id="val-confirm-password" name="val-confirm-password" placeholder="..and confirm it!"></div>
+                  <label class="col-lg-4 col-form-label" for="change_new_confirm_password">Re-type New Password<span class="text-danger">*</span></label>
+                  <div class="col-lg-8"><input type="password" class="form-control" id="change_new_confirm_password" name="change_new_confirm_password" placeholder="..and confirm it!"></div>
                </div>
                <div class="form-group row">
-                  <label class="col-lg-4 col-form-label" for="val-current-password">Current Password <span class="text-danger">*</span></label>
-                  <div class="col-lg-8"><input type="password" class="form-control" id="val-current-password" name="val-current-password" placeholder="Your current password"></div>
+                  <label class="col-lg-4 col-form-label" for="change_current_password">Current Password <span class="text-danger">*</span></label>
+                  <div class="col-lg-8"><input type="password" class="form-control" id="change_current_password" name="change_current_password" placeholder="Your current password"></div>
                </div>
+               <input type="hidden" value="_password_change" name="action">
                <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary float-right">Submit</button></div>
             </form>
          </div>
