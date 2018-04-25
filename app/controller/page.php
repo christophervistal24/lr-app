@@ -57,7 +57,7 @@ class Page extends Controller
             'user_info' => $this->info,
         ]);
         Controller::view('admin/createnew',[
-            'validate'=> $this->admin->validate(array_merge($_POST,$_FILES))
+            'validate'=> $this->admin->validate(array_merge($_POST , $_FILES))
         ]);
         Controller::view('layouts/footer',[]);
     }

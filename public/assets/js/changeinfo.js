@@ -112,6 +112,9 @@ $(document).ready(function(){
                         if(data.success == true){
                             swal("Success!", data.message, "success");
                             $('#val_password').val('');
+                            $('#val-email').removeAttr("disabled");
+                            $('#val-email').val(data.email);
+                            $('#val-email').attr("disabled");
                             $('#side_overlay_name').html(data.firstname + ' ' + data.lastname);
                             $('#top_right_name').html(data.lastname + ' , ' + data.firstname + '<i class="fa fa-angle-down ml-5"></i>');
                             $('#sidebar_name').html(data.firstname + ' ' + data.middlename.substr(0,1) + '. ' + data.lastname);

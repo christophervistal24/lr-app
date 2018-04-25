@@ -126,6 +126,7 @@ $DB = $database->getInstance();
                   'firstname'  => $firstname,
                   'middlename' => $middlename,
                   'lastname'   => $lastname,
+                  'email'      => $user_email,
                   ]);
                }
            }else{

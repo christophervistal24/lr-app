@@ -1,5 +1,4 @@
 <?php
- require_once   LR_APP . '/app/libraries/vendor/autoload.php';
 
 class Utilities extends Violin\Violin
 {

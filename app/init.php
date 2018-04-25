@@ -1,20 +1,21 @@
 <?php
 session_start();
-define('LR_APP',dirname(__DIR__));
+define('LR_APP',str_replace(DIRECTORY_SEPARATOR, "/",dirname(__DIR__)));
+define('APP',LR_APP . '/app');
 
-require_once 'core/App.php';
-require_once 'core/Controller.php';
-require_once 'core/Utilities.php';
-require_once 'core/File.php';
-require_once 'model/Database.php';
-require_once LR_APP . '/app/libraries/phpmailer/PHPMailerAutoload.php';
+require_once APP . '/libraries/vendor/autoload.php';
+require_once APP . '/libraries/phpmailer/PHPMailerAutoload.php';
 
 spl_autoload_register(function($class){
-    if(preg_match('/\A\w+\Z/', $class)) {
-      include('model/' . $class . '.php');
-    }
-});
+    $source_files = ["/core/$class.php","/model/$class.php"];
 
+    foreach ($source_files as $source) {
+        if(file_exists(APP . $source)){
+            require APP . $source;
+        }
+    }
+
+});
 
 $database = new Database;
 $Util     = new Utilities;
