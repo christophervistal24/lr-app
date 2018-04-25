@@ -2,7 +2,7 @@
 <div class="block block-rounded block-themed">
    <!-- Chat Header -->
    <div class="js-chat-head block-content block-content-full block-sticky-options bg-gd-sea text-center c1">
-      <img class="img-avatar img-avatar-thumb" src="../../public/assets/uploads/<?= $image ?>" alt="">
+      <img id="change_info_img" class="img-avatar img-avatar-thumb" src="../../public/assets/uploads/<?= $image ?>" alt="">
       <div class="font-w600 mt-15 mb-5 text-white text-capitalize" id="profile_name"><?=$firstname . ' ' . substr($middlename,0,1) . '. ' . $lastname?></div>
    </div>
    <!-- END Chat Header -->
@@ -12,7 +12,7 @@
       <!-- Single Chat #3 -->
       <div class="block block-rounded block-themed">
          <!-- Chat Header -->
-         <div class="js-chat-head block-content block-content-full block-sticky-options bg-gd-dusk text-center font-w600 mt-15 mb-5 text-white">Change Personal Information<br>
+         <div class="js-chat-head block-content block-content-full block-sticky-options bg-gd-dusk text-center font-w600 mt-15 mb-5 text-white">Change Personal Information & Profile picture<br>
             <small class="text-white">( Please type your password in order to change your information )</small>
          </div>
          <!-- END Chat Header -->
@@ -48,8 +48,8 @@
                   <label class="col-lg-4 col-form-label" for="val-skill">Gender *</label>
                   <div class="col-lg-8">
                      <select class="form-control" id="val-skill" name="gender">
-                                    <option value="female" <?= ($gender =='Female') ? 'selected' : null ; ?>>Female</option>
-                                    <option value="male"   <?= ($gender =='Male') ? 'selected' : null ; ?>>Male</option>
+                        <option value="female" <?= ($gender =='Female') ? 'selected' : null ; ?>>Female</option>
+                        <option value="male"   <?= ($gender =='Male') ? 'selected' : null ; ?>>Male</option>
                      </select>
                   </div>
                </div>
@@ -58,7 +58,18 @@
                   <div class="col-lg-8"><input type="password" class="form-control" id="val_password" name="password" placeholder=""></div>
                </div>
                <input type="hidden" value="_info" name="action">
-               <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary float-right">Submit</button></div>
+               <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary float-right">Change information</button></div>
+            </form>
+            <hr>
+            <form id="changeProfile" action="" method="post" enctype="multipart/form-data">
+               <div class="form-group row">
+                  <label class="col-lg-4 col-form-label" for="example-file-input-custom">Profile picture <span class="text-danger">*</span></label>
+                  <div class="col-lg-8">
+                     <input type="file" style="cursor: pointer;" class="custom-file-input" id="example-file-input-custom"  name="profile_picture"> <span class="custom-file-control">Browse</span>
+                  </div>
+                  <input type="hidden" value="_change_profile" name="action">
+               </div>
+               <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary float-right">Change profile picture</button></div>
             </form>
          </div>
       </div>
@@ -92,7 +103,7 @@
             </form>
          </div>
          <hr>
-          <div class="js-chat-talk block-content block-content-full text-wrap-break-word overflow-y-auto" data-chat-id="3">
+         <div class="js-chat-talk block-content block-content-full text-wrap-break-word overflow-y-auto" data-chat-id="3">
             <form id="changeUsername" action="" method="post">
                <div class="form-group row">
                   <label class="col-lg-4 col-form-label" for="username">New Username<span class="text-danger"> *</span></label>
@@ -103,7 +114,7 @@
                   <div class="col-lg-8"><input type="password" class="form-control" id="password" name="username_password" placeholder="Password is need"></div>
                </div>
                <input type="hidden" value="_username_change" name="action">
-               <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary float-right">Submit</button></div>
+               <div class="form-group row col-lg-8 ml-auto"><button type="submit" class="btn btn-alt-primary float-right">Change username</button></div>
             </form>
          </div>
       </div>

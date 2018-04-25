@@ -113,7 +113,7 @@ $(document).ready(function(){
                             swal("Success!", data.message, "success");
                             $('#val_password').val('');
                             $('#side_overlay_name').html(data.firstname + ' ' + data.lastname);
-                            $('#top_right_name').html(data.lastname + ' , ' + data.firstname);
+                            $('#top_right_name').html(data.lastname + ' , ' + data.firstname + '<i class="fa fa-angle-down ml-5"></i>');
                             $('#sidebar_name').html(data.firstname + ' ' + data.middlename.substr(0,1) + '. ' + data.lastname);
                             $('#profile_name').html(data.firstname + ' ' + data.middlename.substr(0,1) + '. ' + data.lastname);
                         }else{

@@ -88,6 +88,7 @@
 <script src="../../public/assets/js/changeinfo.js"></script>
 <script src="../../public/assets/js/changepassword.js"></script>
 <script src="../../public/assets/js/changeusername.js"></script>
+<script src="../../public/assets/js/changeprofile.js"></script>
 <script src="../../public/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../../public/assets/js/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="../../public/assets/js/pages/be_tables_datatables.js"></script>

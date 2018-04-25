@@ -419,7 +419,7 @@
                         <!-- Visible only in normal mode -->
                         <div class="sidebar-mini-hidden-b text-center">
                             <a class="img-link" href="profile">
-                                <img class="img-avatar" src="<?=  '../../public/assets/uploads/' . $data['user_info']['image']; ?>" alt="">
+                                <img id="sidebar_img" class="img-avatar" src="<?=  '../../public/assets/uploads/' . $data['user_info']['image']; ?>" alt="">
                             </a>
                             <ul class="list-inline mt-10">
                                 <li class="list-inline-item">

@@ -175,6 +175,25 @@ $DB = $database->getInstance();
             }
            break;
 
+           case '_change_profile':
+              if(isset($_FILES) && is_array($_FILES)){
+                if($File->validate($_FILES['profile_picture'])){
+                     $result = $Admin->update_record([
+                      'image'      => $_FILES['profile_picture']['name'],
+                      'updated_at' => time(),
+                      'WHERE id'   => $Util->e($_SESSION['id']),
+                    ]);
+                    if($result){
+                      echo json_encode([
+                      'success' =>true,
+                      'message' =>'Successfully changed your profile',
+                      'img'     => $_FILES['profile_picture']['name'],
+                      ]);
+                    }
+                }
+              }
+           break;
+
         }
     }
 
