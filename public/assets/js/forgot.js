@@ -43,7 +43,17 @@ var OpAuthReminder = function() {
               submitHandler: function(form){
                 var input = $('#reminder-credential').val();
                 if($('#reminder-credential').attr("name") == 'reminder-credential'){
-                     $.ajax({
+
+                     $(document).ajaxStart(function(){
+                        $('#infinite-loader').css('display','block').addClass('text-center');
+                        $("#reminder-credential").attr('disabled',true);
+                     });
+                     $(document).ajaxComplete(function(){
+                        $('#infinite-loader').css('display','none');
+                        $("#reminder-credential").removeAttr('disabled');
+                     });
+
+                   $.ajax({
                             url:'/../../lr-app/app/views/ajax/functions.php',
                             type:"POST",
                             dataType:"json",
@@ -55,7 +65,7 @@ var OpAuthReminder = function() {
                                 }
                             }
                         });
-                return false;
+                  return false;
                 }else if($('#reminder-credential').attr("name") == 'new_password'){
                     var email = $("#email").val();
                     var token = $("#token").val();

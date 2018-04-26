@@ -42,6 +42,9 @@
                                         <input type="hidden" id="token" name="token" value="<?php echo $_GET['token']; ?>">
                                         <input type="hidden"  name="action" value="change_password">
                             <?php endif ?>
+                            <div class="form-group d-flex justify-content-center">
+                                <img src="../../public/assets/imgloader/Infinity-1s-105px.gif" alt="Loader" id="infinite-loader" class="text-center" style="display:none;">
+                            </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-alt-primary">
                                 <i class="fa fa-asterisk mr-10"></i> Submit
@@ -62,3 +65,4 @@
         </div>
     </div>
 </div>
+
