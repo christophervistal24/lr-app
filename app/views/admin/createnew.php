@@ -9,12 +9,13 @@
             </button>
         </div>
     </div>
-    
+
     <div class="block-content">
         <div class="row justify-content-center py-20">
             <div class="col-xl-6">
                 <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+                <!-- createAccount -->
                 <form id="createAccount" action="" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label class="col-lg-4 col-form-label" for="val-username">Username <span class="text-danger">*</span></label>

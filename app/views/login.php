@@ -1,3 +1,4 @@
+
 <!-- Page Content -->
 <div class="bg-image" style="background-image: url('../../public/assets/img/photos/land.jpg');">
     <div class="row mx-0 bg-black-op">
@@ -7,7 +8,7 @@
                 </p>
             </div>
         </div>
-        <div class="hero-static col-md-6 col-xl-4 d-flex align-items-center bg-white invisible" data-toggle="appear" data-class="">
+        <div class="hero-static col-md-6 col-xl-4 d-flex align-items-center bg-white invisible" data-toggle="appear">
             <div class="content content-full">
                 <!-- Header -->
                 <div class="px-30 py-10">
@@ -48,7 +49,6 @@
                             </label>
                         </div>
                     </div>
-                    <input type="text" class="form-control" name="token" value="<?php echo uniqid(md5(rand(1,100))); ?>">
                     <div class="form-group">
                         <button type="submit" class="btn btn-sm btn-hero btn-alt-primary">
                         <i class="si si-login mr-10"></i> Sign In

@@ -1,7 +1,14 @@
 <?php
-class Utilities
+ require_once   LR_APP . '/app/libraries/vendor/autoload.php';
+
+class Utilities extends Violin\Violin
 {
 
+    // Check if the request is POST
+    public function is_post()
+    {
+      return $_SERVER['REQUEST_METHOD'] === 'POST';
+    }
 
     // Escaping characters to prevent SQL Injection attack
     public static function e($data)
@@ -25,9 +32,14 @@ class Utilities
       return $array;
    }
 
+   public function token_csrf()
+   {
+      return bin2hex(random_bytes(32));
+   }
+
    public function get_token()
    {
-      $token = uniqid(md5(rand(1,20)),true);
+      $token = $this->token_csrf();
       $token_expiration = (time() + 86400);
       return [
         'token' => $token,

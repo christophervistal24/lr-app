@@ -1,4 +1,5 @@
 <?php
+
 define('LR_APP',dirname(__DIR__));
 
 require_once 'core/App.php';
@@ -16,9 +17,9 @@ spl_autoload_register(function($class){
 
 
 $database = new Database;
-$Util  = new Utilities;
-$Admin = new Admin;
-$File  = new File;
+$Util     = new Utilities;
+$Admin    = new Admin;
+$File     = new File;
 
 
 

@@ -1,0 +1,12 @@
+{
+    "name": "christoher/form",
+    "authors": [
+        {
+            "name": "Christopher",
+            "email": "christophervistal24@gmail.com"
+        }
+    ],
+    "require": {
+        "alexgarrett/violin": "^2.2"
+    }
+}

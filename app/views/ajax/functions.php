@@ -49,13 +49,13 @@ $DB = $database->getInstance();
           extract($output);
           $email        = $Util->e($email);
           $token        = $Util->e($token);
-          $one_day      = 86400;
           $new_password = password_hash($new_password,PASSWORD_DEFAULT);
+          $one_day      = 86400;
 
           $stmt = $DB->prepare('
               UPDATE admins INNER JOIN forgot_password ON admins.id = forgot_password.user_id
               SET admins.password=:new_password , forgot_password.token_release=:release , forgot_password.token =:token, forgot_password.token_expire = :token_expire
-              WHERE (admins.email=:email AND forgot_password.token_expire <= (forgot_password.token_release + "$one_day"))
+              WHERE (admins.email=:email AND forgot_password.token_expire <= (forgot_password.token_release + $one_day))
               ');
 
           $result = $stmt->execute([
@@ -67,7 +67,7 @@ $DB = $database->getInstance();
           ]);
 
           $affected_rows =  $stmt->rowCount();
-
+          echo $affected_rows;
           if($affected_rows){
              echo json_encode(['success'=>true,'message'=>'Successfully changed your password']);
           }else{
