@@ -523,7 +523,7 @@
                     <!-- Themes functionality initialized in Codebase() -> uiHandleTheme() -->
                     <div class="btn-group" role="group">
                         <!-- change with import -->
-                        <button type="button" class="btn btn-circle btn-dual-secondary">
+                        <button type="button" data-toggle="modal" data-target="#modal-popin" class="btn btn-circle btn-dual-secondary">
                         <i class="fa fa-file-excel-o"></i>
                         </button>
                         <div class="dropdown-menu min-width-150" aria-labelledby="page-header-themes-dropdown">

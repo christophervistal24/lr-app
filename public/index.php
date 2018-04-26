@@ -1,5 +1,8 @@
 <?php
 require_once '../app/init.php';
-// Bootstrapping , Creating new Instance
+/**
+ * [$app Bootsrapping , Creating new instance of an object]
+ * @var App
+ */
 $app = new App;
 ?>
