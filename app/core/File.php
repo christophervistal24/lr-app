@@ -1,4 +1,5 @@
 <?php
+namespace App\Core;
 class File
 {
      private $supported_formats = [

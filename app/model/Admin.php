@@ -1,4 +1,5 @@
 <?php
+namespace App\Model;
 class Admin extends Database
 {
   static protected $table_name = "admins";
@@ -25,6 +26,7 @@ class Admin extends Database
 
    public function call_object($object_name)
    {
+        $object_name = "App\\Core\\" . $object_name;
         return ($this->Utilities != null) ? $this->Utilities : new $object_name;
    }
 
@@ -60,8 +62,8 @@ class Admin extends Database
               if(!$this->is_password_correct($input_password,$user_data['password'])){
                 return 'Please check your username or password';
               }else{
-                $_SESSION['id'] = $user_data['id'];
-                header("Location:dashboard");
+                  $_SESSION['id'] = $user_data['id'];
+                  header("Location:dashboard");
               }
           }else{
                 return 'Please check your username or password';
@@ -130,6 +132,4 @@ class Admin extends Database
         }
         return $all_rows;
    }
-
-
 }

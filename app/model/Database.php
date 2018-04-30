@@ -1,4 +1,6 @@
 <?php
+namespace App\Model;
+use PDO;
 class Database
 {
     const DB_NAME   = 'evaluation';

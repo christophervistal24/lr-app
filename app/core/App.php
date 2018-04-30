@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Core;
 class App
 {
     // Default Controller and method
@@ -23,6 +23,7 @@ class App
         require_once '../app/controller/' . $this->controller . '.php';
 
         // Create new Instance of Controller
+        $this->controller = "App\\Controller\\" . $this->controller;
         $this->controller = new $this->controller;
 
         // Check if the method is set

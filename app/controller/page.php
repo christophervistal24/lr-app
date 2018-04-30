@@ -1,4 +1,7 @@
 <?php
+namespace App\Controller;
+use App\Core\Controller;
+use App\Model\Admin;
 class Page extends Controller
 {
     private $admin;
@@ -7,7 +10,7 @@ class Page extends Controller
 
     public function __construct()
     {
-        $this->admin     = $this->model('Admin');
+        $this->admin = new Admin;
         $this->info      = $this->admin->find_by(@$_SESSION['id'],'id',
                             ['username','firstname','middlename','lastname','gender','birthday','email','image']);
     }
@@ -15,81 +18,57 @@ class Page extends Controller
 
     public function login()
     {
-        Controller::view('layouts/header',['title'=>' | Home']);
-        Controller::view('login',[
+        $this->view('login',[
             'validate'=> $this->admin->is_user($_POST)
         ]);
-        Controller::view('layouts/footer',[]);
     }
 
     public function signup()
     {
-        // Controller::view('layouts/header',[]);
-        Controller::view('signup',[]);
-        Controller::view('layouts/footer',[]);
+        $this->view('signup',[]);
     }
 
     public function forgot()
     {
-        Controller::view('layouts/header',[
-            'title'=>' | Forgot password',
-        ]);
-        Controller::view('forgot_password',[]);
-        Controller::view('layouts/footer',[]);
+        $this->view('forgot_password');
     }
 
     public function dashboard()
     {
-        Controller::view('layouts/header',[
-         'title'=>' | Dashboard',
-         'user_info' => $this->info,
+        $data       = $this->info;
+        $import_csv = $this->admin->import_csv($_FILES);
+        $this->view('admin/dashboard',[
+            'user_info' => $data,
+            'csv'       => $import_csv,
         ]);
-        Controller::view('admin/dashboard',[
-            'csv' => $this->admin->import_csv($_FILES),
-        ]);
-        Controller::view('layouts/footer',[]);
     }
 
     public function createnew()
     {
-        Controller::view('layouts/header',[
-            'title'=>' | Create new account',
-            'user_info' => $this->info,
-        ]);
-        Controller::view('admin/createnew',[
+
+        $this->view('admin/createnew',[
             'validate'=> $this->admin->validate(array_merge($_POST , $_FILES))
         ]);
-        Controller::view('layouts/footer',[]);
     }
 
     public function changeinfo()
     {
-        Controller::view('layouts/header',[
-            'title'=>' | Change Profile',
+        $this->view('admin/changeinfo',[
             'user_info' => $this->info,
         ]);
-        Controller::view('admin/changeinfo',[
-            'user_info' => $this->info,
-        ]);
-        Controller::view('layouts/footer',[]);
     }
 
     public function profile()
     {
-        Controller::view('layouts/header',[
-            'title'=>' | Profile',
+        $this->view('admin/profile',[
             'user_info' => $this->info,
         ]);
-        Controller::view('admin/profile',[
-            'user_info' => $this->info,
-        ]);
-        Controller::view('layouts/footer',[]);
     }
 
 
     public function logout()
     {
-        Controller::view('logout',[]);
+        $this->view('logout',[]);
     }
 
 

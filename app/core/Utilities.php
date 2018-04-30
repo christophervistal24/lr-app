@@ -1,11 +1,13 @@
 <?php
-
+namespace App\Core;
+use Violin;
+use PHPMailer;
 class Utilities extends Violin\Violin
 {
 
   private $db;
 
-    public function inject(PDO $db)
+    public function inject($db)
     {
       $this->db = $db;
     }
