@@ -17,9 +17,9 @@
     <meta property="og:image" content="">
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" href="assets/img/favicons/favicon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="../../public/assets/img/favicons/favicon-192x192.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../public/assets/img/favicons/apple-touch-icon-180x180.png">
+    <link rel="shortcut icon" href="<?= APP['DOC_ROOT'] ?>assets/img/favicons/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="<?= APP['DOC_ROOT'] ?>public/assets/img/favicons/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= APP['DOC_ROOT'] ?>public/assets/img/favicons/apple-touch-icon-180x180.png">
     <!-- END Icons -->
     <style type="text/css">
     body{
@@ -33,10 +33,10 @@
     <!-- Codebase framework -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../public/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
-    <link rel="stylesheet" href="../../public/assets/js/plugins/select2/select2.min.css">
-    <link rel="stylesheet" href="../../public/assets/js/plugins/select2/select2-bootstrap.min.css">
-    <link rel="stylesheet" id="css-main" href="../../public/assets/css/codebase.min.css">
+    <link rel="stylesheet" href="<?= APP['DOC_ROOT'] ?>public/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="<?= APP['DOC_ROOT'] ?>public/assets/js/plugins/select2/select2.min.css">
+    <link rel="stylesheet" href="<?= APP['DOC_ROOT'] ?>public/assets/js/plugins/select2/select2-bootstrap.min.css">
+    <link rel="stylesheet" id="css-main" href="<?= APP['DOC_ROOT'] ?>public/assets/css/codebase.min.css">
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
     <!-- END Stylesheets -->
@@ -63,7 +63,7 @@
                         <!-- User Info -->
                         <div class="content-header-item">
                             <a class="img-link mr-5" href="profile">
-                                <img class="img-avatar img-avatar32" src="../../public/assets/img/avatars/avatar15.jpg" alt="">
+                                <img class="img-avatar img-avatar32" src="<?= APP['DOC_ROOT'] ?>public/assets/img/avatars/avatar15.jpg" alt="">
                             </a>
                             <a id="side_overlay_name" class="align-middle link-effect text-capitalize text-primary-dark font-w600" href="profile"><?= $data['user_info']['firstname'] . ' ' . $data['user_info']['lastname']  ?></a>
                         </div>
@@ -390,7 +390,7 @@
                         <!-- Visible only in normal mode -->
                         <div class="sidebar-mini-hidden-b text-center">
                             <a class="img-link" href="profile">
-                                <img id="sidebar_img" class="img-avatar" src="<?=  '../../public/assets/uploads/' . $data['user_info']['image']; ?>" alt="">
+                                <img id="sidebar_img" class="img-avatar" src="<?= APP['DOC_ROOT'] . 'public/assets/uploads/' . $data['user_info']['image']; ?>" alt="">
                             </a>
                             <ul class="list-inline mt-10">
                                 <li class="list-inline-item">

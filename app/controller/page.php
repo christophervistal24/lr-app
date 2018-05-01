@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
-use App\Core\Controller;
-use App\Model\Admin;
+use App\Core\Controller , App\Model\Admin as Admin_Model;
+
 class Page extends Controller
 {
     private $admin;
@@ -10,66 +10,43 @@ class Page extends Controller
 
     public function __construct()
     {
-        $this->admin = new Admin;
-        $this->info      = $this->admin->find_by(@$_SESSION['id'],'id',
-                            ['username','firstname','middlename','lastname','gender','birthday','email','image']);
+        $this->admin = new Admin_Model;
     }
 
-
+    public function index()
+    {
+        $this->view('templates/header');
+        $this->view('templates/nav');
+        $this->view('index');
+        $this->view('templates/footer');
+    }
     public function login()
     {
-        $this->view('login',[
-            'validate'=> $this->admin->is_user($_POST)
-        ]);
+        $data = $this->admin->is_user($_POST);
+        $this->view('templates/header');
+        $this->view('templates/nav');
+        $this->view('login',['validate'=> $data]);
+        $this->view('templates/footer');
     }
 
     public function signup()
     {
+        $this->view('templates/header');
+        $this->view('templates/nav');
         $this->view('signup',[]);
+        $this->view('templates/modal',[
+            'title'=>'Sample Title',
+            'content'=>'Lorem. . .'
+        ]);
+        $this->view('templates/footer');
     }
 
     public function forgot()
     {
+        $this->view('templates/header');
+        $this->view('templates/nav');
         $this->view('forgot_password');
+        $this->view('templates/footer');
     }
-
-    public function dashboard()
-    {
-        $data       = $this->info;
-        $import_csv = $this->admin->import_csv($_FILES);
-        $this->view('admin/dashboard',[
-            'user_info' => $data,
-            'csv'       => $import_csv,
-        ]);
-    }
-
-    public function createnew()
-    {
-
-        $this->view('admin/createnew',[
-            'validate'=> $this->admin->validate(array_merge($_POST , $_FILES))
-        ]);
-    }
-
-    public function changeinfo()
-    {
-        $this->view('admin/changeinfo',[
-            'user_info' => $this->info,
-        ]);
-    }
-
-    public function profile()
-    {
-        $this->view('admin/profile',[
-            'user_info' => $this->info,
-        ]);
-    }
-
-
-    public function logout()
-    {
-        $this->view('logout',[]);
-    }
-
 
 }

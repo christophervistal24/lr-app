@@ -7,6 +7,16 @@
         }
     ],
     "require": {
-        "alexgarrett/violin": "^2.2"
+        "alexgarrett/violin": "^2.2",
+        "phpmailer/phpmailer": "^6.0"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "App\\" : [
+                "App/Controller",
+                "App/Core",
+                "App/Model"
+            ]
+        }
     }
 }

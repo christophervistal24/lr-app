@@ -1,11 +1,11 @@
 <?php extract($data['user_info']); ?>
-<div class="bg-image bg-image-bottom" style="background-image: url('../../public/assets/img/photos/photo13@2x.jpg');">
+<div class="bg-image bg-image-bottom" style="background-image: url('<?= APP['DOC_ROOT']?>public/assets/img/photos/photo13@2x.jpg');">
     <div class="bg-primary-dark-op py-30">
         <div class="content content-full text-center">
             <!-- Avatar -->
             <div class="mb-15">
                 <a class="img-link" href="profile">
-                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="../../public/assets/uploads/<?= $image; ?>" alt="">
+                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="<?= APP['DOC_ROOT'] ?>public/assets/uploads/<?= $image; ?>" alt="">
                 </a>
             </div>
             <!-- END Avatar -->

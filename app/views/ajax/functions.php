@@ -189,6 +189,7 @@ $DB = $database->getInstance();
                       'success' =>true,
                       'message' =>'Successfully changed your profile',
                       'img'     => $_FILES['profile_picture']['name'],
+                      'doc' => APP['URL_ROOT'],
                       ]);
                     }
                 }

@@ -1,5 +1,4 @@
 <?php
-session_start();
 session_unset();
 session_destroy();
-header("Location:login");
+header("Location:".APP['DOC_ROOT'] . 'page/login');

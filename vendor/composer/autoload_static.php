@@ -7,6 +7,14 @@ namespace Composer\Autoload;
 class ComposerStaticInitd63a14a9062c2a8df89a6b21c023cb0a
 {
     public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'Violin\\' => 7,
+        ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -14,6 +22,14 @@ class ComposerStaticInitd63a14a9062c2a8df89a6b21c023cb0a
     );
 
     public static $prefixDirsPsr4 = array (
+        'Violin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/alexgarrett/violin/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App/Controller',
@@ -31,6 +47,34 @@ class ComposerStaticInitd63a14a9062c2a8df89a6b21c023cb0a
         'App\\Core\\Utilities' => __DIR__ . '/../..' . '/App/Core/Utilities.php',
         'App\\Model\\Admin' => __DIR__ . '/../..' . '/App/Model/Admin.php',
         'App\\Model\\Database' => __DIR__ . '/../..' . '/App/Model/Database.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
+        'Violin\\Contracts\\MessageBagContract' => __DIR__ . '/..' . '/alexgarrett/violin/src/Contracts/MessageBagContract.php',
+        'Violin\\Contracts\\RuleContract' => __DIR__ . '/..' . '/alexgarrett/violin/src/Contracts/RuleContract.php',
+        'Violin\\Contracts\\ValidatorContract' => __DIR__ . '/..' . '/alexgarrett/violin/src/Contracts/ValidatorContract.php',
+        'Violin\\Rules\\AlnumDashRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/AlnumDashRule.php',
+        'Violin\\Rules\\AlnumRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/AlnumRule.php',
+        'Violin\\Rules\\AlphaRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/AlphaRule.php',
+        'Violin\\Rules\\ArrayRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/ArrayRule.php',
+        'Violin\\Rules\\BetweenRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/BetweenRule.php',
+        'Violin\\Rules\\BoolRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/BoolRule.php',
+        'Violin\\Rules\\CheckedRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/CheckedRule.php',
+        'Violin\\Rules\\DateRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/DateRule.php',
+        'Violin\\Rules\\EmailRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/EmailRule.php',
+        'Violin\\Rules\\IntRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/IntRule.php',
+        'Violin\\Rules\\IpRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/IpRule.php',
+        'Violin\\Rules\\MatchesRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/MatchesRule.php',
+        'Violin\\Rules\\MaxRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/MaxRule.php',
+        'Violin\\Rules\\MinRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/MinRule.php',
+        'Violin\\Rules\\NumberRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/NumberRule.php',
+        'Violin\\Rules\\RegexRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/RegexRule.php',
+        'Violin\\Rules\\RequiredRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/RequiredRule.php',
+        'Violin\\Rules\\UrlRule' => __DIR__ . '/..' . '/alexgarrett/violin/src/Rules/UrlRule.php',
+        'Violin\\Support\\MessageBag' => __DIR__ . '/..' . '/alexgarrett/violin/src/Support/MessageBag.php',
+        'Violin\\Violin' => __DIR__ . '/..' . '/alexgarrett/violin/src/Violin.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

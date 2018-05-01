@@ -1,7 +1,6 @@
-
+<!-- '<?=APP['DOC_ROOT']?>public/assets/img/photos/land.jpg' -->
 <!-- Page Content -->
-<!-- ../../public/assets/img/photos/land.jpg -->
-<div class="bg-image" style="background-image: url('');">
+<div class="bg-image" style="background-image: url();">
     <div class="row mx-0 bg-black-op">
         <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
             <div class="p-30 invisible" data-toggle="appear">
@@ -13,7 +12,7 @@
             <div class="content content-full">
                 <!-- Header -->
                 <div class="px-30 py-10">
-                    <a class="link-effect font-w700" href="index.html">
+                    <a class="link-effect font-w700" href="index">
                         <i class="si si-fire"></i>
                         <span class="font-size-xl text-primary-dark">code</span><span class="font-size-xl">base</span>
                     </a>
@@ -61,7 +60,7 @@
                         <i class="si si-login mr-10"></i> Sign In
                         </button>
                         <div class="mt-30">
-                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="">
+                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="signup">
                                 <i class="fa fa-plus mr-5"></i> Create Account
                             </a>
                             <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="forgot">

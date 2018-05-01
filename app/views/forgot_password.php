@@ -43,7 +43,7 @@
                                         <input type="hidden"  name="action" value="change_password">
                             <?php endif ?>
                             <div class="form-group d-flex justify-content-center">
-                                <img src="../../public/assets/imgloader/Infinity-1s-105px.gif" alt="Loader" id="infinite-loader" class="text-center" style="display:none;">
+                                <img src="<?= APP['DOC_ROOT']; ?>/public/assets/imgloader/Infinity-1s-105px.gif" alt="Loader" id="infinite-loader" class="text-center" style="display:none;">
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-alt-primary">

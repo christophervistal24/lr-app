@@ -15,7 +15,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php  $rows = []; ?>
+                 <?php  $rows = []; ?>
                 <?php foreach ($data['csv'] as $key => $value): ?>
                     <?php
                         if($key === 0){

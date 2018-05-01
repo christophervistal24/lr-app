@@ -1,32 +1,26 @@
-<!--Bootstrap Forms Validation -->
 <h2 class="content-heading">Form</h2>
 <div class="block">
     <div class="block-header block-header-default">
         <h3 class="block-title">Create new admin</h3>
-               <div class="block-options">
+        <div class="block-options">
             <button type="button" class="btn-block-option">
             <i class="si si-wrench"></i>
             </button>
         </div>
     </div>
-
-        <!-- If someone tries to disabled javascript to bypass validation -->
-        <?php if (isset($data['validate'])): ?>
-                <?php foreach ($data['validate'] as $value): ?>
-                     <div class="alert alert-danger" role="alert">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <span><?=$value?>&emsp;</span>
-                    <br>
-                    </div>
-                <?php endforeach ?>
-        <?php endif ?>
-
-
+    <!-- If someone tries to disabled javascript to bypass validation -->
+    <?php if (isset($data['validate'])): ?>
+    <?php foreach ($data['validate'] as $value): ?>
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <span><?=$value?>&emsp;</span>
+        <br>
+    </div>
+    <?php endforeach ?>
+    <?php endif ?>
     <div class="block-content">
         <div class="row justify-content-center py-20">
             <div class="col-xl-6">
-                <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
-                <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
                 <form id="createAccount" action="" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label class="col-lg-4 col-form-label" for="val-username">Username <span class="text-danger">*</span></label>
@@ -72,11 +66,10 @@
                 <input type="file" style="cursor: pointer;" class="custom-file-input" id="example-file-input-custom"  name="image"> <span class="custom-file-control">Browse</span>
             </div>
         </div>
-            <div class="form-group row col-lg-8 ml-auto"><input value="Submit" type="submit" class="btn btn-alt-primary"></div>
-            <input type="hidden" name="action" value="_create">
-        </form>
-    </div>
+        <div class="form-group row col-lg-8 ml-auto"><input value="Submit" type="submit" class="btn btn-alt-primary"></div>
+        <input type="hidden" name="action" value="_create">
+    </form>
 </div>
 </div>
 </div>
-<!-- Bootstrap Forms Validation
+</div>

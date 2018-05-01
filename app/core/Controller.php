@@ -10,11 +10,8 @@ class Controller
     // Method for Injecting view to the document
     public function view($view , $data = [])
     {
-        if(file_exists('../app/views/' . $view . '.php')){
-            require_once '../app/views/templates/header.php';
-            require_once '../app/views/' . $view . '.php';
-            require_once '../app/views/templates/footer.php';
-            extract($data);
+        if(file_exists(APP['URL_ROOT'] . 'app/views/' . $view . '.php')){
+            require_once  APP['URL_ROOT'] . 'app/views/' . $view . '.php';
         }
     }
 }

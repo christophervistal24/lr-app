@@ -4,7 +4,7 @@ class App
 {
     // Default Controller and method
     protected $controller = 'page';
-    protected $method     = 'login';
+    protected $method     = 'index';
     protected $params     = [];
 
     public function __construct()
@@ -12,15 +12,13 @@ class App
 
         // Collect the values
         $url = $this->parse_url();
-
         //  Check if the controller exists
-        if (file_exists('app/controller/' . $url[0] . '.php')) {
+        if (file_exists(APP['URL_ROOT'] . 'app/controller/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
         }
-
         // Require the controller
-        require_once '../app/controller/' . $this->controller . '.php';
+        require_once   APP['URL_ROOT'] . 'app/controller/' . $this->controller . '.php';
 
         // Create new Instance of Controller
         $this->controller = "App\\Controller\\" . $this->controller;

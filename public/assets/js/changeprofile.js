@@ -1,5 +1,8 @@
 /*jshint esversion:6*/
 $(document).ready(function(){
+    $.validator.addMethod("filesize",function(value,element,param){
+        return this.optional(element) || (element.files[0].size <= param);
+    },'Filesize must be less than 1MB');
     $('#changeProfile').validate({
             errorClass: 'invalid-feedback animated fadeInDown',
             errorElement: 'div',
@@ -16,7 +19,8 @@ $(document).ready(function(){
              rules: {
                 'profile_picture':{
                     required:true,
-                    accept: "image/jpg,image/jpeg,image/png,image/gif"
+                    accept: "image/jpg,image/jpeg,image/png,image/gif",
+                    filesize: 1048576,
                 }
             },
             messages: {
@@ -37,8 +41,8 @@ $(document).ready(function(){
                         if(data.success == true){
                             swal("Success!", data.message, "success");
                             $(form)[0].reset();
-                            $('#change_info_img').attr('src','../../public/assets/uploads/' + data.img);
-                            $('#sidebar_img').attr('src','../../public/assets/uploads/' + data.img);
+                            $('#change_info_img').attr('src','/lr-app/public/assets/uploads/'+data.img);
+                            $('#sidebar_img').attr('src','/lr-app/public/assets/uploads/'+data.img);
                         }
                     },
                 });

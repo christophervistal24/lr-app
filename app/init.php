@@ -1,16 +1,20 @@
 <?php
 ob_start();
 session_start();
-define('LR_APP',str_replace(DIRECTORY_SEPARATOR, "/",dirname(__DIR__)));
-define('APP',LR_APP . '/app');
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once APP . '/libraries/vendor/autoload.php';
-require_once APP . '/libraries/phpmailer/PHPMailerAutoload.php';
 
-use App\Model\Database;
-use App\Core\Utilities;
-use App\Model\Admin;
-use App\Core\File;
+use  App\Model\Database;
+use   App\Core\Utilities;
+use   App\Model\Admin;
+use   App\Core\File;
+
+define('APP',[
+    'URL_ROOT' => str_replace("\\","/",dirname(__DIR__)) . "/",
+    'APP_ROOT' => str_replace("\\","/",dirname(__DIR__)) . "/app/",
+    'DOC_ROOT' =>  "/" . str_replace("\\","/",basename(dirname(__DIR__))) . "/",
+]);
+
+require_once APP['URL_ROOT'] . 'vendor/autoload.php';
+
 
 $database = new Database;
 $Util     = new Utilities;

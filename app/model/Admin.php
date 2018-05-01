@@ -37,16 +37,14 @@ class Admin extends Database
       if(parent::create_new_record($record)){
           $admin_id = self::$database->lastInsertId();
           $result   = self::$database
-              ->exec("
-               INSERT INTO forgot_password (user_id,token,token_expire)
-               VALUES ('$admin_id','',0)
-           ");
+              ->exec("INSERT INTO forgot_password (user_id,token,token_expire) VALUES ('$admin_id','',0)");
           return (bool) $result;
       }
    }
 
    public function is_user($items = [])
    {
+    //refactor this
       if($this->Utilities->is_post() && isset($items)){
         extract($items);
         $input_username = $this->Utilities->e($username);
@@ -63,7 +61,7 @@ class Admin extends Database
                 return 'Please check your username or password';
               }else{
                   $_SESSION['id'] = $user_data['id'];
-                  header("Location:dashboard");
+                  header("Location:" . APP['DOC_ROOT'] . 'admin/');
               }
           }else{
                 return 'Please check your username or password';
@@ -73,11 +71,11 @@ class Admin extends Database
 
    public function validate($fields = [])
    {
-      $fields = $this->Utilities->array_except($fields,['action']);
-      if($this->Utilities->is_post() && is_array($fields)){
+    //refactor this
+      if($this->Utilities->is_post() && is_array($fields) && isset($fields)){
+          $fields = $this->Utilities->array_except($fields,['action']);
           $this->Utilities->inject(self::$database);
-          extract($fields['admin']);
-          extract($fields['image']);
+          extract($fields);
           $this->Utilities->addRuleMessage('isGender','The {field} must be female or male.');
           $this->Utilities->addRuleMessage('isImage','The {field} must jpeg , jpg , png or gif.');
           $this->Utilities->addRuleMessage('uniqueUsername','{value} is already exists');
@@ -114,10 +112,10 @@ class Admin extends Database
       return parent::update_record($data);
    }
 
-   public function import_csv($csv_data = [])
+  public function import_csv($csv_data = [])
    {
       $all_rows = [];
-      if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES)){
+      if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['import'])){
             $filename = $_FILES['import']['tmp_name'];
             if($_FILES['import']['size'] > 0){
                 $file = fopen($filename,"r");

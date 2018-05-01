@@ -1,13 +1,15 @@
 <?php
 namespace App\Core;
-use Violin;
-use PHPMailer;
-class Utilities extends Violin\Violin
+use Violin\Violin;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PDO;
+class Utilities extends Violin
 {
 
   private $db;
 
-    public function inject($db)
+    public function inject(PDO $db)
     {
       $this->db = $db;
     }
@@ -79,7 +81,7 @@ class Utilities extends Violin\Violin
         <p>Forgot your password?</p>
         <p>We've received a request to reset the password for this email address.</p>
         <p>To reset your password please copy and paste this URL into your browser (link expires in 24 hours)</p>
-        <b><a href=forgot?email=".$data['fetch_email']."&token=".$data['token'].">http://localhost/lr-app/public/page/forgot?email=".$data['fetch_email']."&token=".$data['token']."</a></b>
+        <b><a href=forgot?email=".$data['fetch_email']."&token=".$data['token'].">http://localhost/lr-app/page/forgot?email=".$data['fetch_email']."&token=".$data['token']."</a></b>
         <p>This link takes you to a secure page where you can change your password.</p>
         <p>If you don't want to reset your password, please ignore this message. Your password will not be reset.</p>
         <p>---------------------------------</p>
