@@ -54,7 +54,7 @@ var OpAuthReminder = function() {
                      });
 
                    $.ajax({
-                            url:'/../../lr-app/app/views/ajax/functions.php',
+                            url:'/../../evaluation/app/views/ajax/functions.php',
                             type:"POST",
                             dataType:"json",
                             data:{email:input , action:'forgot_password'},
@@ -70,7 +70,7 @@ var OpAuthReminder = function() {
                     var email = $("#email").val();
                     var token = $("#token").val();
                      $.ajax({
-                            url:'/../../lr-app/app/views/ajax/functions.php',
+                            url:'/../../evaluation/app/views/ajax/functions.php',
                             type:"POST",
                             dataType:"json",
                             data:$(form).serialize(),

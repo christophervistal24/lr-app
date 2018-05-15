@@ -7,6 +7,7 @@ class Controller
     {
         header("Location:" . $url);
     }
+
     // Method for Injecting view to the document
     public function view($view , $data = [])
     {

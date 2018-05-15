@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>SDSSU (FES) <?= $title ?? '' ?></title>
+    <title>SDSSU (FES) <?= ucfirst($data['title']) ?? '' ?></title>
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
     <!-- Open Graph Meta -->
@@ -18,6 +18,7 @@
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
     <link rel="shortcut icon" href="<?= APP['DOC_ROOT'] ?>assets/img/favicons/favicon.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.amaran/0.5.4/amaran.min.css">
     <link rel="icon" type="image/png" sizes="192x192" href="<?= APP['DOC_ROOT'] ?>public/assets/img/favicons/favicon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="<?= APP['DOC_ROOT'] ?>public/assets/img/favicons/apple-touch-icon-180x180.png">
     <!-- END Icons -->

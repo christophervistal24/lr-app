@@ -6,7 +6,9 @@
 <!-- End of Modal for Import CSV -->
 <!-- END Main Container -->
 <!-- Codebase Core JS -->
+
 <script src="<?= APP['DOC_ROOT'] ?>public/assets/js/core/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/jquery.amaran/0.5.4/jquery.amaran.min.js"></script>
 <script src="<?= APP['DOC_ROOT'] ?>public/assets/js/core/popper.min.js"></script>
 <script src="<?= APP['DOC_ROOT'] ?>public/assets/js/core/bootstrap.min.js"></script>
 <script src="<?= APP['DOC_ROOT'] ?>public/assets/js/core/jquery.slimscroll.min.js"></script>
@@ -43,6 +45,7 @@ jQuery(function () {
 // Init page helpers (BS Datepicker + BS Colorpicker + BS Maxlength + Select2 + Masked Input + Range Sliders + Tags Inputs plugins)
 Codebase.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']);
 });
+$(".alert").alert();
 </script>
 </script>
 </body>

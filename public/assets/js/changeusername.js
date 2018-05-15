@@ -17,7 +17,7 @@ $(document).ready(function(){
                     required: true,
                     minlength: 5,
                     remote:{
-                        url:"/../../lr-app/app/views/ajax/functions.php",
+                        url:"/../../evaluation/app/views/ajax/functions.php",
                         type:"POST",
                         dataType :"json",
                         data: {
@@ -34,7 +34,7 @@ $(document).ready(function(){
                     required: true,
                     minlength: 8,
                      remote:{
-                        url:"/../../lr-app/app/views/ajax/functions.php",
+                        url:"/../../evaluation/app/views/ajax/functions.php",
                         type:"POST",
                         dataType :"json",
                         data: {
@@ -62,7 +62,7 @@ $(document).ready(function(){
              },
               submitHandler: function(form){
                 $.ajax({
-                    url:'/../../lr-app/app/views/ajax/functions.php',
+                    url:'/../../evaluation/app/views/ajax/functions.php',
                     type:"POST",
                     dataType:"json",
                     data:$(form).serialize(),

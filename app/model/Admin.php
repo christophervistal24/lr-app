@@ -1,133 +1,26 @@
 <?php
 namespace App\Model;
-class Admin extends Database
+use App\Core\Database as DB;
+use App\Core\CRUD;
+
+class Admin extends DB
 {
-  static protected $table_name = "admins";
-  protected $Utilities;
-  static protected $db_columns = [
-    'id',
-    'username',
-    'password',
-    'created_at',
-    'updated_at',
-    'firstname',
-    'middlename',
-    'lastname',
-    'gender',
-    'birthday',
-    'email',
-    'image',
-   ];
+  private $action;
 
-   public function __construct()
-   {
-      $this->Utilities = $this->call_object('Utilities');
-   }
+  public function __construct()
+  {
+    $this->action = new CRUD;
+  }
 
-   public function call_object($object_name)
-   {
-        $object_name = "App\\Core\\" . $object_name;
-        return ($this->Utilities != null) ? $this->Utilities : new $object_name;
-   }
-
-   public function create_new_user($args = [])
-   {
-      $hashed_pass = $this->Utilities->set_hash($args);
-      $record      = $this->Utilities->array_except($hashed_pass,['confirm_password']);
-      if(parent::create_new_record($record)){
-          $admin_id = self::$database->lastInsertId();
-          $result   = self::$database
-              ->exec("INSERT INTO forgot_password (user_id,token,token_expire) VALUES ('$admin_id','',0)");
-          return (bool) $result;
-      }
-   }
-
-   public function is_user($items = [])
-   {
-    //refactor this
-      if($this->Utilities->is_post() && isset($items)){
-        extract($items);
-        $input_username = $this->Utilities->e($username);
-        $input_password = $this->Utilities->e($password);
-         // Retrieve some data check and also check if the username is exists
-        $user_data = $this->find_by($input_username,'username',
-        [
-        'username','password','firstname','middlename','lastname',
-        'gender','birthday','email','image','id'
-        ]);
-          if(isset($user_data['username']) && isset($input_password)){
-             //validate the password input
-              if(!$this->is_password_correct($input_password,$user_data['password'])){
-                return 'Please check your username or password';
-              }else{
-                  $_SESSION['id'] = $user_data['id'];
-                  header("Location:" . APP['DOC_ROOT'] . 'admin/');
-              }
-          }else{
-                return 'Please check your username or password';
-          }
-      }
-   }
-
-   public function validate($fields = [])
-   {
-    //refactor this
-      if($this->Utilities->is_post() && is_array($fields) && isset($fields)){
-          $fields = $this->Utilities->array_except($fields,['action']);
-          $this->Utilities->inject(self::$database);
-          extract($fields);
-          $this->Utilities->addRuleMessage('isGender','The {field} must be female or male.');
-          $this->Utilities->addRuleMessage('isImage','The {field} must jpeg , jpg , png or gif.');
-          $this->Utilities->addRuleMessage('uniqueUsername','{value} is already exists');
-          $this->Utilities->addRuleMessage('uniqueEmail','{value} is already exists');
-          $this->Utilities->validate([
-            'username|Username'                      => [$username,'required|uniqueUsername|min(3)|max(20)'],
-            'email|Email'                            => [$email,'required|email|uniqueEmail'],
-            'password|Password'                      => [$password,'required'],
-            'confirm_password|Password confirmation' => [$confirm_password,'required|matches(password)'],
-            'firstname|Firstname'                    => [$firstname,'required'],
-            'middlename|Middlename'                  => [$middlename,'required'],
-            'lastname|Lastname'                      => [$lastname,'required'],
-            'birthday|Birthday'                      => [$birthday,'required'],
-            'gender|Gender'                          => [$gender,'required|isGender(male,female)'],
-            'type|Image'                      => [$type,'required|isImage(image/png,image/jpg,image/jpeg,image/gif)'],
-          ]);
-
-          return $this->Utilities->errors()->all();
-      }
-   }
-
-   public function find_by($value,$column,$retrieve = [])
-   {
-          return parent::get_values($value,$column,$retrieve);
-   }
-
-   public function is_password_correct($input_p,$fetch_password)
-   {
-       return password_verify($input_p,$fetch_password);
-   }
-
-   public static function update_record($data = [])
-   {
-      return parent::update_record($data);
-   }
-
-  public function import_csv($csv_data = [])
-   {
-      $all_rows = [];
-      if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['import'])){
-            $filename = $_FILES['import']['tmp_name'];
-            if($_FILES['import']['size'] > 0){
-                $file = fopen($filename,"r");
-                $header =  [
-                    'id','firstname','lastname','address','email','gender','student_id'
-                ];
-                while(($row = fgetcsv($file,1000,",")) !== false){
-                    $all_rows[] = array_combine($header,$row);
-                }
-                fclose($file);
-            }
-        }
-        return $all_rows;
-   }
+  public function getAdminInformation(int $user_id)
+  {
+     return $this->action->read([
+            'columns' => '*',
+            'table'   => 'admins',
+            'where' => [
+                'id',
+                'id_value' => $user_id,
+            ],
+     ]);
+  }
 }

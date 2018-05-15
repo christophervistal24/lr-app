@@ -26,7 +26,7 @@ class App
 
         // Check if the method is set
         if(isset($url[1])){
-            // Check if the method is exists in Page class or Controller Class
+            // Check if the method is exists in Page , Admin , Student Class from Controller folder
             if(method_exists($this->controller, $url[1])){
                 $this->method = $url[1];
                 unset($url[1]);

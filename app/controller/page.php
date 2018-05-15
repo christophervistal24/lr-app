@@ -1,36 +1,50 @@
 <?php
 namespace App\Controller;
-use App\Core\Controller , App\Model\Admin as Admin_Model;
+use App\Core\Functions;
+use App\Core\Controller;
+use App\Model\User;
 
 class Page extends Controller
 {
-    private $admin;
-    private $info;
+    use Functions;
 
+    private $user;
 
     public function __construct()
     {
-        $this->admin = new Admin_Model;
+        $this->user = new User;
     }
 
     public function index()
     {
-        $this->view('templates/header');
+        $data['title'] = ' Home';
+        $this->view('templates/header',$data);
         $this->view('templates/nav');
         $this->view('index');
         $this->view('templates/footer');
     }
+
     public function login()
     {
-        $data = $this->admin->is_user($_POST);
-        $this->view('templates/header');
+        if ($this->is_post()) {
+            //this will need to become false for check because the validator return some message if the validation is failed
+            //in php every string with value is a true
+            if (!$this->user->isUser($_POST)) {
+                $this->redirect('/evaluation/admin/dashboard');
+            }else{
+                $data['error_message'] = $this->user->isUser($_POST);
+            }
+        }
+        $data['title'] = ' Login';
+        $this->view('templates/header',$data);
         $this->view('templates/nav');
-        $this->view('login',['validate'=> $data]);
+        $this->view('login',@$data);
         $this->view('templates/footer');
     }
 
     public function signup()
     {
+        //wrong
         $this->view('templates/header');
         $this->view('templates/nav');
         $this->view('signup',[]);

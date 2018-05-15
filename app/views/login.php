@@ -1,6 +1,6 @@
 <!-- '<?=APP['DOC_ROOT']?>public/assets/img/photos/land.jpg' -->
 <!-- Page Content -->
-<div class="bg-image" style="background-image: url();">
+<div class="bg-image">
     <div class="row mx-0 bg-black-op">
         <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
             <div class="p-30 invisible" data-toggle="appear">
@@ -12,11 +12,7 @@
             <div class="content content-full">
                 <!-- Header -->
                 <div class="px-30 py-10">
-                    <a class="link-effect font-w700" href="index">
-                        <i class="si si-fire"></i>
-                        <span class="font-size-xl text-primary-dark">code</span><span class="font-size-xl">base</span>
-                    </a>
-                    <h1 class="h3 font-w700 mt-30 mb-10">Welcome to Your Dashboard</h1>
+                    <h1 class="h3 font-w700 mt-30 mb-10">Welcome to  <span class="font-size-xl text-dual-primary-dark">SDDSU</span><span class="font-size-xl text-primary"> ( F E S )</span></h1>
                     <h2 class="h5 font-w400 text-muted mb-0">Please sign in</h2>
                 </div>
                 <!-- END Header -->
@@ -24,16 +20,15 @@
                 <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
                 <form action="" method="POST">
-
+                    <span class="text-danger text-center"><?php
+                        if (isset($data['error_message'])) {
+                            echo $data['error_message'][0];
+                        }
+                    ?></span>
                     <div class="form-group row">
                         <div class="col-12">
-                             <div class="container text-danger">
-                                <?php
-                                    echo $data['validate'];
-                                ?>
-                             </div>
                             <div class="form-material floating">
-                                <input type="text" class="form-control" id="login-username" name="username">
+                                <input type="text" class="form-control" id="login-username" name="username" required autofocus="true">
                                 <label for="login-username">Username</label>
                             </div>
                         </div>
@@ -41,7 +36,7 @@
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
-                                <input type="password" class="form-control" id="login-password" name="password">
+                                <input type="password" class="form-control" required id="login-password" name="password">
                                 <label for="login-password">Password</label>
                             </div>
                         </div>

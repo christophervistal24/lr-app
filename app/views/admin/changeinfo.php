@@ -7,6 +7,22 @@
    </div>
    <!-- END Chat Header -->
 </div>
+<div class="container">
+   <?php
+   if (isset($data['error_message'])) {
+   foreach ($data['error_message'] as $value) {
+   ?>
+   <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+      <span><?= $value ?></span>
+   </div>
+   <?php
+   }
+   }
+   ?>
+</div>
 <div class="row">
    <div class="col-md-6">
       <!-- Single Chat #3 -->
@@ -15,8 +31,6 @@
          <div class="js-chat-head block-content block-content-full block-sticky-options bg-gd-dusk text-center font-w600 mt-15 mb-5 text-white">Change Personal Information & Profile picture<br>
             <small class="text-white">( Please type your password in order to change your information )</small>
          </div>
-         <!-- END Chat Header -->
-         <!-- Messages (demonstration messages are added with JS code at the bottom of this page) -->
          <div class="js-chat-talk block-content block-content-full text-wrap-break-word overflow-y-auto" data-chat-id="3">
             <form id="changeInformation" action="" method="post">
                <div class="form-group row">

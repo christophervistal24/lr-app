@@ -14,7 +14,7 @@
                     <th>Student ID</th>
                 </tr>
             </thead>
-            <tbody>
+           <!--  <tbody>
                  <?php  $rows = []; ?>
                 <?php foreach ($data['csv'] as $key => $value): ?>
                     <?php
@@ -32,7 +32,7 @@
                     ?>
                 <?php endforeach ?>
 
-            </tbody>
+            </tbody> -->
         </table>
     </div>
     <!-- END OF BLOCK-CONTENT -->

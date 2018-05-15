@@ -24,7 +24,7 @@ $(document).ready(function(){
                     required: true,
                     email: true,
                     remote:{
-                        url:"/../../lr-app/app/views/ajax/functions.php",
+                        url:"/../../evaluation/app/views/ajax/functions.php",
                         type:"POST",
                         dataType :"json",
                         data: {
@@ -41,7 +41,7 @@ $(document).ready(function(){
                     required: true,
                     minlength: 8,
                     remote:{
-                        url:"/../../lr-app/app/views/ajax/functions.php",
+                        url:"/../../evaluation/app/views/ajax/functions.php",
                         type:"POST",
                         dataType :"json",
                         data: {
@@ -64,7 +64,7 @@ $(document).ready(function(){
                 },
                 'lastname':{
                     required:true,
-                    minlength:5,
+                    minlength:2,
                 },
                 'birthday':{
                     required:true,
@@ -104,7 +104,7 @@ $(document).ready(function(){
              },
               submitHandler: function(form){
                  $.ajax({
-                    url:'/../../lr-app/app/views/ajax/functions.php',
+                    url:'/../../evaluation/app/views/ajax/functions.php',
                     type:"POST",
                     dataType:"json",
                     data:$(form).serialize(),

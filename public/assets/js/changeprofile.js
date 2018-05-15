@@ -31,7 +31,7 @@ $(document).ready(function(){
              },
               submitHandler: function(form){
                   $.ajax({
-                    url:'/../../lr-app/app/views/ajax/functions.php',
+                    url:'/../../evaluation/app/views/ajax/functions.php',
                     type:"POST",
                     dataType:"json",
                     data:new FormData(form),
@@ -41,13 +41,12 @@ $(document).ready(function(){
                         if(data.success == true){
                             swal("Success!", data.message, "success");
                             $(form)[0].reset();
-                            $('#change_info_img').attr('src','/lr-app/public/assets/uploads/'+data.img);
-                            $('#sidebar_img').attr('src','/lr-app/public/assets/uploads/'+data.img);
+                            $('#change_info_img').attr('src','/evaluation/public/assets/uploads/'+data.img);
+                            $('#sidebar_img').attr('src','/evaluation/public/assets/uploads/'+data.img);
                         }
                     },
                 });
                 return false;
             }
-
     });
 });

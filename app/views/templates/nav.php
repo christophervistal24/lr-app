@@ -5,8 +5,7 @@
             <!-- Logo -->
             <div class="content-header-item">
                 <a class="link-effect font-w700 mr-5" href="index">
-                    <i class="si si-fire text-primary"></i>
-                    <span class="font-size-xl text-dual-primary-dark">code</span><span class="font-size-xl text-primary">base</span>
+                    <span class="font-size-xl text-dual-primary-dark">SDDSU</span><span class="font-size-xl text-primary"> ( F E S )</span>
                 </a>
             </div>
             <!-- END Logo -->
@@ -23,7 +22,7 @@
             -->
             <ul class="nav-main-header nav-main-header-no-icons">
                 <li>
-                    <a class="active" href="start_landing.html">
+                    <a class="active" href="/evaluation/page/">
                         <i class="si si-home"></i>Home
                     </a>
                 </li>
@@ -53,12 +52,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="signup">
+                    <a href="/evaluation/page/signup">
                         <i class="si si-wrench"></i>Sign up
                     </a>
                 </li>
                 <li>
-                    <a href="login">
+                    <a href="/evaluation/page/login">
                         <i class="si si-wrench"></i>Login
                     </a>
                 </li>
