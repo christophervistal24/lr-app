@@ -28,7 +28,7 @@
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
-                                <input type="text" class="form-control" id="login-username" name="username" required autofocus="true">
+                                <input type="text" class="form-control" id="login-username"  required name="username"  autofocus="true">
                                 <label for="login-username">Username</label>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="form-material floating">
-                                <input type="password" class="form-control" required id="login-password" name="password">
+                                <input type="password" class="form-control"  id="login-password" required name="password">
                                 <label for="login-password">Password</label>
                             </div>
                         </div>

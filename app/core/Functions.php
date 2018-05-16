@@ -47,4 +47,11 @@ trait Functions
         }
     }
 
+    public function file(string $field_name , string $element)
+    {
+        if ($this->is_post() && isset($_FILES[$field_name][$element])) {
+            return trim($_FILES[$field_name][$element]);
+        }
+    }
+
 }

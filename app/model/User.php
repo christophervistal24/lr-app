@@ -14,6 +14,6 @@ class User
 
     public function isUser(array $user_input = [])
     {
-       return $this->login->checkLoginCredentials($user_input);
+       return $this->login->verifyLoginCredentials($user_input);
     }
 }

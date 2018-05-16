@@ -27,18 +27,16 @@ class Page extends Controller
     public function login()
     {
         if ($this->is_post()) {
+             $data['error_message'] = $this->user->isUser($_POST);
             //this will need to become false for check because the validator return some message if the validation is failed
             //in php every string with value is a true
-            if (!$this->user->isUser($_POST)) {
-                $this->redirect('/evaluation/admin/dashboard');
-            }else{
-                $data['error_message'] = $this->user->isUser($_POST);
-            }
+            (!$data['error_message']) ? $this->redirect('/evaluation/admin/dashboard') : false;
         }
+
         $data['title'] = ' Login';
         $this->view('templates/header',$data);
         $this->view('templates/nav');
-        $this->view('login',@$data);
+        $this->view('login',$data);
         $this->view('templates/footer');
     }
 
