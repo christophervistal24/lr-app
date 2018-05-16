@@ -1,14 +1,6 @@
 </div>
-<!-- END Page Content -->
 </main>
-<!-- Modal for Import CSV -->
-<?php //include_once APP['APP_ROOT'] . 'views/templates/modal_browse.php'; ?>
-<!-- End of Modal for Import CSV -->
-<!-- END Main Container -->
-<!-- Codebase Core JS -->
-
 <script src="<?= APP['DOC_ROOT'] ?>public/assets/js/core/jquery.min.js"></script>
-<script src="//cdn.jsdelivr.net/jquery.amaran/0.5.4/jquery.amaran.min.js"></script>
 <script src="<?= APP['DOC_ROOT'] ?>public/assets/js/core/popper.min.js"></script>
 <script src="<?= APP['DOC_ROOT'] ?>public/assets/js/core/bootstrap.min.js"></script>
 <script src="<?= APP['DOC_ROOT'] ?>public/assets/js/core/jquery.slimscroll.min.js"></script>
@@ -47,7 +39,5 @@ Codebase.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-i
 });
 $(".alert").alert();
 </script>
-</script>
 </body>
 </html>
-<?php ob_end_flush(); ?>

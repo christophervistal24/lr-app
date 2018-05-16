@@ -139,6 +139,34 @@ class Validation extends Violin
           break;
 
         case '_create':
+            $data_and_rules = [
+                'data' => [
+                       'username|Username'                 => $this->post('username'),
+                       'email|Email Address'               => $this->post('email'),
+                       'password|Password'                 => $this->post('password'),
+                       'confirm_password|Re-type Password' => $this->post('confirm_password'),
+                       'firstname|Firstname'               => $this->post('firstname'),
+                       'middlename|Middlename'             => $this->post('middlename'),
+                       'lastname|Lastname'                 => $this->post('lastname'),
+                       'birthday|Birthday'                 => $this->post('birthday'),
+                       'gender|Gender'                     => $this->post('gender'),
+                       'type|Image'                     => $this->file('image','type'),
+                ],
+
+                'rules' => [
+                       'username'         => 'required|isUsernameUnique',
+                       'email'            => 'required|email',
+                       'password'         => 'required|min(8)',
+                       'confirm_password' => 'required|matches(password)|min(8)',
+                       'firstname'        => 'required|min(5)',
+                       'middlename'       => 'required|min(2)',
+                       'lastname'         => 'required|min(2)',
+                       'birthday'         => 'required',
+                       'gender'           => 'required',
+                       'type'             => 'required|isImage(image/png,image/jpg,image/jpeg,image/gif)',
+                ]
+            ];
+                return $this->isValid($data_and_rules,$fields['action']);
           break;
 
         case 'login':
@@ -195,6 +223,12 @@ class Validation extends Violin
    private function _change_profileRules()
    {
       Violin::addRuleMessage('isImage', 'Filetype is invalid');
+   }
+
+   private function _createRules()
+   {
+      $this->_change_profileRules();
+      Violin::addRuleMessage('isUsernameUnique','Username already exists');
    }
 
 }

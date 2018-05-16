@@ -33,10 +33,10 @@ class Admin extends Controller
     public function createnew()
     {
         $data = $this->info;                                            //same as array_push
-        $result = ($this->is_post()) ? $this->validator->validate_items($_POST+$_FILES) : null;
+        $data['error_message'] = ($this->is_post()) ? $this->validator->validate_items($_POST+$_FILES) : null;
         $data['title'] = " Create new Admin";
         $this->view('templates/header',$data);
-        $this->view('admin/createnew');
+        $this->view('admin/createnew',$data);
         $this->view('templates/footer');
     }
 

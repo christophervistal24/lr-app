@@ -19,7 +19,7 @@ class Admin extends DB
             'table'   => 'admins',
             'where' => [
                 'id',
-                'id_value' => $user_id,
+                $user_id,
             ],
      ]);
   }

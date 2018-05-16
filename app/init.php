@@ -1,5 +1,4 @@
 <?php
-ob_start();
 session_start();
 // use  App\Core\Database;
 // use  App\Core\Utilities;

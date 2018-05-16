@@ -1,4 +1,3 @@
-<?php ob_start(); ?>
 <!DOCTYPE html>
 <!--[if lte IE 9]>     <html lang="en" class="no-focus lt-ie10 lt-ie10-msg"> <![endif]-->
 <!--[if gt IE 9]><!--> <html lang="en" class="no-focus"> <!--<![endif]-->
@@ -18,7 +17,6 @@
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
     <link rel="shortcut icon" href="<?= APP['DOC_ROOT'] ?>assets/img/favicons/favicon.png">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.amaran/0.5.4/amaran.min.css">
     <link rel="icon" type="image/png" sizes="192x192" href="<?= APP['DOC_ROOT'] ?>public/assets/img/favicons/favicon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="<?= APP['DOC_ROOT'] ?>public/assets/img/favicons/apple-touch-icon-180x180.png">
     <!-- END Icons -->

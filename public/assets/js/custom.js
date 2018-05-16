@@ -13,11 +13,11 @@ $(document).ready(function(){
                 jQuery(e).remove();
             },
         rules: {
-                'admin[username]': {
+                'username': {
                     required: true,
                     minlength: 5,
                     remote:{
-                        url:"/../../evaluation/app/views/ajax/functions.php",
+                        url:"/../../evaluation/app/views/ajax/admin_functions.php",
                         type:"POST",
                         dataType :"json",
                         data: {
@@ -30,11 +30,11 @@ $(document).ready(function(){
                         },
                     }
                 },
-                'admin[email]': {
+                'email': {
                     required: true,
                     email: true,
                     remote:{
-                        url:"/../../evaluation/app/views/ajax/functions.php",
+                        url:"/../../evaluation/app/views/ajax/admin_functions.php",
                         type:"POST",
                         dataType :"json",
                         data: {
@@ -47,31 +47,31 @@ $(document).ready(function(){
                         },
                     }
                 },
-                'admin[password]': {
+                'password': {
                     required: true,
                     minlength: 8
                 },
-                'admin[confirm_password]': {
+                'confirm_password': {
                     required: true,
                     equalTo: '#val-password',
                     minlength :8
                 },
-                'admin[firstname]': {
+                'firstname': {
                     required: true,
                     minlength:5,
                 },
-                'admin[middlename]':{
+                'middlename':{
                     required:true,
                     minlength:2,
                 },
-                'admin[lastname]':{
+                'lastname':{
                     required:true,
                     minlength:5,
                 },
-                'admin[birthday]':{
+                'birthday':{
                     required:true,
                 },
-                'admin[gender]':{
+                'gender':{
                     required:true,
                 },
                  'image':{
@@ -80,40 +80,40 @@ $(document).ready(function(){
                 }
             },
             messages: {
-                'admin[username]': {
+                'username': {
                     required: 'Please enter a username',
                     minlength:"Username must be minimum of {0} characters",
                     remote:$.validator.format("{0} is already exists")
                 },
-                'admin[email]':{
+                'email':{
                  required: 'Please enter a valid email address',
                  remote:$.validator.format("{0} is already exists")
                 },
-                'admin[password]': {
+                'password': {
                     required: 'Please provide a password',
                     minlength: 'Your password must be at least 8 characters long'
                 },
-                'admin[confirm_password]': {
+                'confirm_password': {
                     required: 'Please provide a password',
                     minlength: 'Your password must be at least 8 characters long',
                     equalTo: 'Please enter the same password as above'
                 },
-                'admin[firstname]':{
+                'firstname':{
                     required: 'Please enter firstname',
                     minlength: 'Your password must be at least 5 characters long',
                 },
-                'admin[middlename]':{
+                'middlename':{
                     required:'Please enter middlename',
                     minlength:'Your middlename must be at least 2 characters long'
                 },
-                'admin[lastname]':{
+                'lastname':{
                     required:'Please enter lastname',
                     minlength:'Your lastname must be at least 5 characters long'
                 },
-                'admin[birthday]':{
+                'birthday':{
                     required:'Please choose your birthday'
                 },
-                'admin[gender]':{
+                'gender':{
                     required:'Please select gender',
                 },
                  'image':{
@@ -121,18 +121,18 @@ $(document).ready(function(){
                     accept: 'Image must be JPEG , JPG , PNG or GIF'
                 }
              },
-              submitHandler: function(form){
+              submitHandler: (form) => {
                 $.ajax({
-                    url:'/../../evaluation/app/views/ajax/functions.php',
+                    url:'/../../evaluation/app/views/ajax/admin_functions.php',
                     type:"POST",
                     dataType:"json",
                     data:new FormData(form),
                     processData : false,
                     contentType:false,
-                    success:function(data){
+                    success:(data) => {
                         if(data.success == true){
                             swal("Success!", "Successfully create new account", "success");
-                            $(form)[0].reset();
+                            // $(form)[0].reset();
                         }
                     },
                 });

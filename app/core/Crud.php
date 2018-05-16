@@ -27,14 +27,14 @@ class CRUD implements ICRUD
         return (bool) $this->query($statement);
     }
 
-    public function read(array $sql = []) : array
+    public function read(array $sql = [])
     {
         $statement =  " SELECT " . $sql['columns'] . " FROM   " . $sql['table'] . " ";
         if (@$sql['where'] !== null) {
             $statement .= " WHERE ";
             $statement .= $sql['where'][0];
             $statement .= "=";
-            $statement .= $sql['where']['id_value'];
+            $statement .= $sql['where'][1];
         }
         $statement = $this->query($statement);
         return $this->queryResult->get_result(@$sql['get'],$statement);

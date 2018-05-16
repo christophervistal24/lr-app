@@ -1,6 +1,6 @@
 /*jshint esversion:6*/
-$(document).ready(function(){
-         $('#change_email').change(function(){
+$(document).ready(() => {
+ $('#change_email').change(function(){
              $('#val-email').prop('disabled', !$(this).is(':checked'));
              if($(this).is(":unchecked")){
                 $('#email-row').removeClass('is-invalid');
@@ -9,13 +9,13 @@ $(document).ready(function(){
     $('#changeInformation').validate({
             errorClass: 'invalid-feedback animated fadeInDown',
             errorElement: 'div',
-            errorPlacement: function(error, e) {
+            errorPlacement: (error, e)  => {
                 jQuery(e).parents('.form-group > div').append(error);
             },
-            highlight: function(e) {
+            highlight: (e) => {
                 jQuery(e).closest('.form-group').removeClass('is-invalid').addClass('is-invalid');
             },
-            success: function(e) {
+            success: (e) => {
                 jQuery(e).closest('.form-group').removeClass('is-invalid');
                 jQuery(e).remove();
             },
@@ -24,16 +24,12 @@ $(document).ready(function(){
                     required: true,
                     email: true,
                     remote:{
-                        url:"/../../evaluation/app/views/ajax/functions.php",
+                        url:"/../../evaluation/app/views/ajax/admin_functions.php",
                         type:"POST",
                         dataType :"json",
                         data: {
-                            email: function(){
-                                return $("#val-email").val();
-                            },
-                            action: function(){
-                                return 'check_email';
-                            }
+                            email:  () => { return $("#val-email").val();},
+                            action: () => { return 'check_email'; }
                         },
                     }
                 },
@@ -41,16 +37,12 @@ $(document).ready(function(){
                     required: true,
                     minlength: 8,
                     remote:{
-                        url:"/../../evaluation/app/views/ajax/functions.php",
+                        url:"/../../evaluation/app/views/ajax/admin_functions.php",
                         type:"POST",
                         dataType :"json",
                         data: {
-                            password: function(){
-                                return $("#val_password").val();
-                            },
-                            action: function(){
-                                return 'check_password';
-                            }
+                            password: () => { return $("#val_password").val(); },
+                            action:   () => { return 'check_password'; }
                         },
                     }
                 },
@@ -102,13 +94,13 @@ $(document).ready(function(){
                     required:'Please select gender',
                 },
              },
-              submitHandler: function(form){
+              submitHandler: (form) => {
                  $.ajax({
-                    url:'/../../evaluation/app/views/ajax/functions.php',
+                    url:'/../../evaluation/app/views/ajax/admin_functions.php',
                     type:"POST",
                     dataType:"json",
                     data:$(form).serialize(),
-                    success:function(data){
+                    success: (data) => {
                         if(data.success == true){
                             swal("Success!", data.message, "success");
                             $('#val_password').val('');
@@ -119,13 +111,12 @@ $(document).ready(function(){
                             $('#top_right_name').html(data.lastname + ' , ' + data.firstname + '<i class="fa fa-angle-down ml-5"></i>');
                             $('#sidebar_name').html(data.firstname + ' ' + data.middlename.substr(0,1) + '. ' + data.lastname);
                             $('#profile_name').html(data.firstname + ' ' + data.middlename.substr(0,1) + '. ' + data.lastname);
-                        }else{
-                            swal("Error!", data.message, "error");
                         }
                     },
                 });
                 return false;
             }
 
-    });
+});
+
 });
